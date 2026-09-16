@@ -1,0 +1,793 @@
+<!DOCTYPE html>
+<html lang="ms">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="icon" type="image/x-icon" href="/favicon.ico">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<title>PustakaHadith — Perpustakaan Digital Hadis | 62,169 Hadis &amp; 9 Kitab</title>
+<meta name="description" content="PustakaHadith: perpustakaan digital 62,169 hadis daripada 9 kitab utama (Kutub al-Tis'ah) dengan carian kata kunci, carian makna AI, terjemahan 4 bahasa, darjat ulama dan syarah.">
+
+<!-- Open Graph -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://pustakahadith.site.je">
+<meta property="og:title" content="PustakaHadith — 62,169 Hadis dari 9 Kitab Utama">
+<meta property="og:description" content="Perpustakaan digital hadis percuma: 62,169 hadis, 9 kitab (Kutub al-Tis'ah), carian makna AI, terjemahan 4 bahasa, darjat ulama, dan syarah — semua offline.">
+<meta property="og:image" content="https://pustakahadith.site.je/img/app-home.png">
+<meta property="og:image:alt" content="PustakaHadith — Halaman Utama">
+<meta property="og:locale" content="ms_MY">
+<meta property="og:site_name" content="PustakaHadith">
+
+<!-- Twitter Card -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="PustakaHadith — 62,169 Hadis dari 9 Kitab Utama">
+<meta name="twitter:description" content="Perpustakaan digital hadis percuma: 62,169 hadis, 9 kitab, carian makna AI, terjemahan 4 bahasa — semua offline.">
+<meta name="twitter:image" content="https://pustakahadith.site.je/img/app-home.png">
+<style>
+:root{
+  --page:#0A1520; --surface:#0A1520; --card:#10222F; --card2:#16303F;
+  --header:#0C1A26; --teal:#3EC9B0; --tealL:#6FDCC8; --tealP:#123A38;
+  --tealD:#06251F; --ttl:#EAF6F6; --sec:#9FBFCB; --muted:#7FA3B0;
+  --faint:#6E93A1; --bord:#1D3A4A; --bordL:#274B5E;
+  --glass-bg:rgba(13,42,60,0.08); --glass-bd:rgba(62,201,176,0.23);
+  --gold:#E0B35C; --amber:#E0C88A;
+  --radius:16px; --radius-sm:10px;
+  --max:1160px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
+  background:var(--page); color:var(--ttl); line-height:1.65;
+  overflow-x:hidden;
+}
+::selection{background:var(--tealP); color:var(--tealL)}
+img{max-width:100%; display:block}
+a{color:var(--teal); text-decoration:none}
+a:hover{color:var(--tealL)}
+.container{max-width:var(--max); margin:0 auto; padding:0 28px}
+.wrap{max-width:var(--max); margin:0 auto; padding:0 28px}
+
+/* ---------- latar ---------- */
+.globe-fixed{
+  position:fixed; inset:0; z-index:-3;
+  background:url('img/bg-globe.webp') center/cover no-repeat;
+  opacity:.35;
+}
+.grad-overlay{
+  position:fixed; inset:0; z-index:-2;
+  background:
+    linear-gradient(180deg, rgba(10,21,32,.92) 0%, rgba(10,21,32,.55) 40%, rgba(10,21,32,.85) 78%, rgba(10,21,32,1) 100%);
+}
+.vignette{
+  position:fixed; inset:0; z-index:-1; pointer-events:none;
+  background:radial-gradient(1200px 600px at 50% -10%, rgba(62,201,176,.12), transparent 60%);
+}
+
+/* ---------- navbar ---------- */
+nav{
+  position:fixed; top:0; left:0; right:0; z-index:50;
+  backdrop-filter:blur(14px);
+  background:rgba(10,21,32,.72);
+  border-bottom:1px solid rgba(29,58,74,.6);
+}
+.nav-inner{display:flex; align-items:center; justify-content:space-between; height:66px}
+.brand{display:flex; align-items:center; gap:12px; color:var(--ttl)}
+.brand img{width:38px; height:38px; border-radius:9px}
+.brand .b-p{font-size:21px; font-weight:800; color:var(--teal); letter-spacing:0}
+.brand .b-h{font-size:21px; font-weight:300; color:var(--tealL)}
+.nav-links{display:flex; align-items:center; gap:26px}
+.nav-links a{color:var(--sec); font-size:.92rem; font-weight:500; position:relative}
+.nav-links a::after{content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--teal); transition:width .25s}
+.nav-links a:hover::after{width:100%}
+.nav-links a:hover{color:var(--ttl)}
+.nav-cta{background:var(--teal); color:#06251F; font-weight:700; padding:9px 20px; border-radius:999px; font-size:.9rem}
+.nav-cta:hover{background:var(--tealL); color:#06251F}
+.gh-icon{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; color:var(--sec); border:1px solid var(--bord); transition:all .2s}
+.gh-icon:hover{color:var(--ttl); border-color:var(--teal); background:var(--card2); transform:translateY(-2px)}
+.burger{display:none; background:none; border:none; color:var(--ttl); font-size:1.6rem; cursor:pointer}
+.lang-switch{display:flex; align-items:center; gap:2px; margin:0 6px 0 10px}
+.lang-btn{background:none; border:none; color:var(--faint); font-weight:700; font-size:.8rem; cursor:pointer; padding:5px 9px; border-radius:8px; transition:all .2s; letter-spacing:.3px}
+.lang-btn:hover{color:var(--ttl)}
+.lang-btn.active{color:var(--teal); background:var(--tealP); border:1px solid var(--glass-bd)}
+.lang-sep{color:var(--bordL); font-weight:300; font-size:.8rem}
+
+/* ---------- hero ---------- */
+.hero{min-height:100vh; display:flex; flex-direction:column; justify-content:center; padding:120px 0 60px; position:relative}
+.hero-grid{display:grid; grid-template-columns:1.05fr .95fr; gap:52px; align-items:center}
+.eyebrow{
+  display:inline-flex; align-items:center; gap:8px;
+  color:var(--teal); font-size:.8rem; font-weight:700; letter-spacing:2.5px;
+  font-family:'Segoe UI'; text-transform:uppercase;
+  border:1px solid var(--glass-bd); background:var(--glass-bg);
+  padding:6px 14px; border-radius:999px; margin-bottom:22px;
+}
+.eyebrow .dot{width:7px; height:7px; border-radius:50%; background:var(--teal); box-shadow:0 0 10px var(--teal); animation:pulse 1.8s infinite}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+h1.hero-title{font-size:clamp(2.3rem,5vw,3.6rem); font-weight:800; line-height:1.12; letter-spacing:-.5px; margin-bottom:20px}
+h1.hero-title .grad{
+  background:linear-gradient(92deg,#6FDCC8,#3EC9B0 55%,#E0C88A);
+  -webkit-background-clip:text; background-clip:text; -webkit-text-fill-color:transparent;
+}
+.hero-sub{color:var(--sec); font-size:1.12rem; max-width:540px; margin-bottom:30px}
+.hero-sub b{color:var(--ttl)}
+.hero-ctas{display:flex; gap:14px; flex-wrap:wrap; margin-bottom:34px}
+.btn{display:inline-flex; align-items:center; gap:10px; font-weight:700; border-radius:12px; padding:14px 26px; font-size:.98rem; transition:all .2s; cursor:pointer; border:none}
+.btn-primary{background:var(--teal); color:#06251F}
+.btn-primary:hover{background:var(--tealL); transform:translateY(-2px); box-shadow:0 12px 30px rgba(62,201,176,.35)}
+.btn-ghost{background:transparent; color:var(--ttl); border:1px solid var(--bordL); box-shadow:inset 0 0 0 0 transparent}
+.btn-ghost:hover{border-color:var(--teal); color:var(--tealL); transform:translateY(-2px)}
+.btn .ico{font-size:1.05rem}
+.hero-stats{display:grid; grid-template-columns:repeat(4,1fr); gap:14px; max-width:600px}
+.stat{background:var(--glass-bg); border:1px solid var(--glass-bd); border-radius:var(--radius-sm); padding:14px 16px}
+.stat .num{font-size:1.5rem; font-weight:800; color:var(--tealL); line-height:1}
+.stat .lbl{font-size:.78rem; color:var(--muted); margin-top:5px; letter-spacing:.3px}
+
+/* mockup utama */
+.mockup-wrap{position:relative}
+.mockup-frame{
+  position:relative; background:var(--card); border:1px solid var(--bord);
+  border-radius:20px; overflow:hidden; box-shadow:0 40px 90px rgba(0,0,0,.55);
+  transform:perspective(1200px) rotateY(-8deg) rotateX(3deg);
+  transition:transform .5s ease;
+}
+.mockup-wrap:hover .mockup-frame{transform:perspective(1200px) rotateY(-3deg) rotateX(1deg)}
+.mockup-bar{display:flex; align-items:center; gap:7px; background:var(--header); padding:11px 14px; border-bottom:1px solid var(--bord)}
+.mockup-bar i{width:10px; height:10px; border-radius:50%; display:block}
+.mockup-bar i:nth-child(1){background:#E08A80}
+.mockup-bar i:nth-child(2){background:#E0B35C}
+.mockup-bar i:nth-child(3){background:#5CBF85}
+.mockup-img{display:block; width:100%; aspect-ratio:16/9; object-fit:cover; object-position:top}
+.float-chip{
+  position:absolute; display:flex; align-items:center; gap:8px;
+  background:rgba(16,34,47,.92); border:1px solid var(--glass-bd);
+  border-radius:999px; padding:9px 16px; font-size:.82rem; font-weight:600;
+  box-shadow:0 14px 34px rgba(0,0,0,.45); backdrop-filter:blur(6px);
+}
+.float-chip b{color:var(--tealL)}
+.fc-1{top:22px; right:-14px; animation:floaty 5s ease-in-out infinite}
+.fc-2{bottom:34px; left:-18px; animation:floaty 6s ease-in-out .8s infinite}
+@keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+
+.scroll-hint{position:absolute; bottom:22px; left:50%; transform:translateX(-50%); color:var(--faint); font-size:.75rem; letter-spacing:2px; display:flex; flex-direction:column; align-items:center; gap:6px}
+.scroll-hint span{width:1px; height:34px; background:linear-gradient(var(--teal),transparent); display:block}
+
+/* ---------- seksyen biasa ---------- */
+section{padding:96px 0}
+.section-head{text-align:center; max-width:680px; margin:0 auto 60px}
+.kicker{color:var(--teal); font-weight:700; letter-spacing:3px; font-size:.78rem; text-transform:uppercase}
+.section-head h2{font-size:clamp(1.7rem,3.4vw,2.5rem); font-weight:800; margin:12px 0 14px; letter-spacing:-.3px}
+.section-head p{color:var(--muted); font-size:1.02rem}
+
+/* ---------- tangkap layar / tab ---------- */
+.showcase{background:linear-gradient(180deg,transparent,rgba(16,34,47,.4) 20%,rgba(16,34,47,.4) 80%,transparent)}
+.tabs{display:flex; justify-content:center; gap:10px; flex-wrap:wrap; margin-bottom:36px}
+.tab{
+  background:var(--card); border:1px solid var(--bord); color:var(--sec);
+  padding:9px 20px; border-radius:999px; font-size:.9rem; font-weight:600;
+  cursor:pointer; transition:all .2s;
+}
+.tab:hover{border-color:var(--teal); color:var(--tealL)}
+.tab.active{background:var(--teal); color:#06251F; border-color:var(--teal)}
+.shot-stage{position:relative; max-width:880px; margin:0 auto}
+.shot{display:none}
+.shot.active{display:block; animation:fadeUp .45s ease}
+@keyframes fadeUp{from{opacity:0; transform:translateY(18px)}to{opacity:1; transform:none}}
+.shot-frame{background:var(--card); border:1px solid var(--glass-bd); border-radius:18px; overflow:hidden; box-shadow:0 34px 80px rgba(0,0,0,.5)}
+.shot-frame img{width:100%; aspect-ratio:16/9.4; object-fit:cover; object-position:top}
+.shot-cap{text-align:center; color:var(--muted); font-size:.9rem; margin-top:16px}
+.shot-cap b{color:var(--tealL)}
+
+/* ---------- ciri ---------- */
+.ciri-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px}
+.ciri{
+  background:var(--card); border:1px solid var(--bord); border-radius:var(--radius);
+  padding:28px; transition:all .25s; position:relative; overflow:hidden;
+}
+.ciri::before{content:''; position:absolute; inset:0 0 auto 0; height:3px;
+  background:linear-gradient(90deg,var(--teal),var(--tealL)); transform:scaleX(0); transform-origin:left; transition:transform .3s}
+.ciri:hover{transform:translateY(-5px); border-color:var(--teal); background:var(--card2)}
+.ciri:hover::before{transform:scaleX(1)}
+.ciri .ico{
+  width:52px; height:52px; border-radius:14px; display:flex; align-items:center; justify-content:center;
+  font-size:1.5rem; background:var(--tealP); border:1px solid var(--glass-bd); margin-bottom:18px;
+}
+.ciri h3{font-size:1.08rem; font-weight:700; margin-bottom:10px; color:var(--ttl)}
+.ciri p{color:var(--muted); font-size:.92rem}
+.ciri .quote{color:var(--tealL); font-weight:700; font-size:.95rem; margin-bottom:8px}
+.ciri .tag{display:inline-block; margin-top:14px; font-size:.74rem; font-weight:700; color:var(--teal); background:var(--tealP); padding:3px 10px; border-radius:999px; border:1px solid var(--glass-bd)}
+
+/* ---------- rak 9 kitab ---------- */
+.kitab{background:linear-gradient(180deg,transparent,rgba(10,21,32,.6))}
+.rak{display:grid; grid-template-columns:repeat(9,1fr); gap:14px}
+.rak-item{text-align:center; transition:all .25s}
+.rak-item .book{
+  background:linear-gradient(160deg,#16303F,#0C1A26); border:1px solid var(--bord);
+  border-radius:var(--radius-sm) var(--radius-sm) 6px 6px; padding:18px 8px; position:relative;
+  box-shadow:0 12px 26px rgba(0,0,0,.4);
+  display:flex; flex-direction:column; align-items:center; gap:8px; cursor:pointer;
+}
+.rak-item .book::after{content:''; position:absolute; left:6%; right:6%; bottom:0; height:4px; background:var(--teal); opacity:0; border-radius:0 0 6px 6px; transition:opacity .2s}
+.rak-item:hover .book{border-color:var(--teal); transform:translateY(-6px)}
+.rak-item:hover .book::after{opacity:1}
+.rak-item .cover{width:44px; height:44px; object-fit:contain; filter:grayscale(40%)}
+.rak-item:hover .cover{filter:none}
+.rak-item .an{font-size:1.15rem; color:var(--tealL)}
+.rak-item .nm{font-size:.76rem; font-weight:600; color:var(--sec); line-height:1.25}
+.rak-item .en{font-size:.66rem; color:var(--faint); margin-top:2px}
+
+/* ---------- stat band ---------- */
+.band{background:linear-gradient(120deg,#0F2417,#06251F 60%,#0F2417); border-block:1px solid var(--bord)}
+.band-grid{display:grid; grid-template-columns:repeat(4,1fr); gap:18px; text-align:center}
+.band-item .bnum{font-size:clamp(1.9rem,4vw,2.8rem); font-weight:800; color:var(--tealL); line-height:1}
+.band-item .blbl{color:var(--sec); font-size:.88rem; margin-top:10px; letter-spacing:.4px}
+.band-item .bnote{color:var(--faint); font-size:.72rem; margin-top:4px}
+
+/* ---------- muat turun ---------- */
+.dl-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px; margin-top:10px}
+.dl-card{
+  background:var(--card); border:1px solid var(--bord); border-radius:var(--radius);
+  padding:30px; text-align:center; transition:all .25s; display:flex; flex-direction:column; gap:12px;
+}
+.dl-card:hover{border-color:var(--teal); transform:translateY(-5px)}
+.dl-card .badge{font-size:.7rem; font-weight:700; letter-spacing:1.5px; padding:4px 12px; border-radius:999px; align-self:center}
+.b-ready{color:#06251F; background:var(--teal)}
+.b-soon{color:var(--amber); background:var(--tealP); border:1px solid var(--glass-bd)}
+.dl-card .dico{font-size:2rem}
+.dl-card h3{font-size:1.1rem; font-weight:700}
+.dl-card p{color:var(--muted); font-size:.86rem; flex:1}
+.dl-card .btn{justify-content:center}
+.dl-note{text-align:center; color:var(--faint); font-size:.82rem; margin-top:26px}
+
+/* ---------- hubungi ---------- */
+#hubungi{padding:80px 0}
+.hubungi-grid{display:grid; grid-template-columns:1fr 1fr; gap:40px; margin-top:40px}
+.hubungi-info{background:var(--card); border:1px solid var(--bord); border-radius:var(--radius); padding:32px}
+.hubungi-info h3{font-size:1.15rem; font-weight:700; margin-bottom:20px; color:var(--ttl)}
+.hubungi-item{display:flex; align-items:center; gap:14px; margin-bottom:18px}
+.hubungi-item .ico{font-size:1.4rem; width:44px; height:44px; display:flex; align-items:center; justify-content:center; background:var(--glass-bg); border:1px solid var(--glass-bd); border-radius:12px; flex-shrink:0}
+.hubungi-item .txt{color:var(--sec); font-size:.92rem; min-width:0}
+.hubungi-item .txt a{overflow-wrap:anywhere; word-break:break-word; color:var(--teal)}
+.hubungi-item .txt b{color:var(--ttl); display:block; margin-bottom:2px}
+.hubungi-form{background:var(--card); border:1px solid var(--bord); border-radius:var(--radius); padding:32px}
+.hubungi-form h3{font-size:1.15rem; font-weight:700; margin-bottom:20px; color:var(--ttl)}
+.form-group{margin-bottom:16px}
+.form-group label{display:block; color:var(--sec); font-size:.85rem; font-weight:600; margin-bottom:6px}
+.form-group input,.form-group textarea{width:100%; background:var(--card2); border:1px solid var(--bord); border-radius:var(--radius-sm); padding:12px 16px; color:var(--ttl); font-family:inherit; font-size:.92rem; transition:border-color .2s}
+.form-group input:focus,.form-group textarea:focus{outline:none; border-color:var(--teal)}
+.form-group textarea{resize:vertical; min-height:100px}
+@media(max-width:600px){.hubungi-grid{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- footer ---------- */
+footer{border-top:1px solid var(--bord); background:var(--header); padding:46px 0 30px}
+.foot-grid{display:flex; justify-content:space-between; align-items:flex-start; gap:30px; flex-wrap:wrap}
+.foot-brand{max-width:320px}
+.foot-brand .brand{margin-bottom:12px}
+.foot-brand p{color:var(--muted); font-size:.85rem}
+.foot-cols{display:flex; gap:60px; flex-wrap:wrap}
+.foot-col h4{color:var(--ttl); font-size:.85rem; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:14px}
+.foot-col a{display:block; color:var(--muted); font-size:.88rem; margin-bottom:9px}
+.foot-col a:hover{color:var(--tealL)}
+.copyright{text-align:center; color:var(--faint); font-size:.78rem; margin-top:38px; padding-top:20px; border-top:1px solid rgba(29,58,74,.5)}
+
+/* ---------- reveal on scroll ---------- */
+.reveal{opacity:0; transform:translateY(28px); transition:opacity .7s ease, transform .7s ease}
+.reveal.in{opacity:1; transform:none}
+
+/* ---------- responsive ---------- */
+@media(max-width:980px){
+  .hero-grid{grid-template-columns:1fr; gap:44px}
+  .float-chip{display:none}
+  .ciri-grid{grid-template-columns:repeat(2,1fr)}
+  .rak{grid-template-columns:repeat(3,1fr)}
+  .dl-grid{grid-template-columns:1fr}
+  .nav-links{display:none; position:absolute; top:66px; left:0; right:0; background:rgba(8,17,26,.97); border-bottom:1px solid var(--bord); flex-direction:column; align-items:flex-start; padding:16px 20px 22px; gap:18px}
+  .nav-links.open{display:flex}
+  .burger{display:block; z-index:20}
+}
+@media(max-width:600px){
+  .ciri-grid{grid-template-columns:1fr}
+  .band-grid{grid-template-columns:repeat(2,1fr); gap:26px}
+  .hero-stats{grid-template-columns:repeat(2,1fr)}
+  .hero{min-height:auto; padding:100px 0 40px}
+}
+</style>
+</head>
+<body>
+
+<!-- latar -->
+<div class="globe-fixed"></div>
+<div class="grad-overlay"></div>
+<div class="vignette"></div>
+
+<!-- navbar -->
+<nav>
+  <div class="wrap nav-inner">
+    <a class="brand" href="#">
+      <img src="img/logo.png" alt="PustakaHadith">
+      <span><span class="b-p">Pustaka</span><span class="b-h">Hadith</span></span>
+    </a>
+    <div class="nav-links">
+      <a href="#"><span data-i18n="nav-home">Utama</span></a>
+      <a href="#tampil"><span data-i18n="nav-shots">Tangkap Layar</span></a>
+      <a href="#ciri"><span data-i18n="nav-features">Ciri Utama</span></a>
+      <a href="#kitab"><span data-i18n="nav-books">9 Kitab</span></a>
+      <a href="#hubungi"><span data-i18n="nav-contact">Hubungi</span></a>
+      <a class="nav-cta" href="#muat-turun"><span data-i18n="nav-download">Muat Turun</span></a>
+      <a class="gh-icon" href="https://github.com/PustakaHadith/PustakaHadith" target="_blank" rel="noopener" title="PustakaHadith di GitHub" aria-label="PustakaHadith di GitHub">
+        <svg viewBox="0 0 16 16" width="20" height="20" fill="currentColor" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+      </a>
+    </div>
+    <div class="lang-switch" role="group" aria-label="Bahasa / Language">
+      <button class="lang-btn active" data-lang="ms" aria-pressed="true">MS</button>
+      <span class="lang-sep">|</span>
+      <button class="lang-btn" data-lang="en" aria-pressed="false">EN</button>
+    </div>
+    <button class="burger" onclick="toggleNav()" aria-label="Menu" aria-expanded="false">☰</button>
+  </div>
+</nav>
+
+<!-- hero -->
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <span class="eyebrow"><span class="dot"></span> <span data-i18n="hero-eyebrow">Aplikasi Desktop Carian Hadis — Percuma &amp; Luar Talian</span></span>
+      <h1 class="hero-title" data-i18n="hero-title">62,169 Hadis<br>dari 9 Kitab Utama,<br><span class="grad">Sekali Tayang.</span></h1>
+      <p class="hero-sub" data-i18n="hero-sub">Rujukan digital <b>9 kitab hadis (Kutub al-Tis'ah)</b> dalam Bahasa Melayu — dibina untuk <b>pelajar, pengkaji, peminat hadis dan pengguna awam</b>. Teks Arab penuh, terjemahan Melayu · Indonesia · Inggeris, transliterasi, darjat ulama, huraian ringkas dan carian makna AI. Semuanya <b>berfungsi sepenuhnya tanpa internet</b>.</p>
+      <div class="hero-ctas">
+        <a class="btn btn-primary" href="#muat-turun"><span class="ico">⬇</span> <span data-i18n="cta-download">Muat Turun Percuma</span></a>
+        <a class="btn btn-ghost" href="#tampil"><span class="ico">▶</span> <span data-i18n="cta-view">Lihat Tangkap Layar</span></a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><div class="num">62,169</div><div class="lbl" data-i18n="stat-hadith">Hadis</div></div>
+        <div class="stat"><div class="num">9</div><div class="lbl" data-i18n="stat-books">Kitab</div></div>
+        <div class="stat"><div class="num">4</div><div class="lbl" data-i18n="stat-lang">Bahasa</div></div>
+        <div class="stat"><div class="num">63,930</div><div class="lbl" data-i18n="stat-grade">Klasifikasi Darjat</div></div>
+      </div>
+    </div>
+    <div class="mockup-wrap">
+      <div class="mockup-frame">
+        <div class="mockup-bar"><i></i><i></i><i></i></div>
+        <img class="mockup-img" src="img/app-home.webp" alt="PustakaHadith — Halaman Utama" data-i18n-alt="alt-home">
+      </div>
+      <div class="float-chip fc-1">🔍 <b><span data-i18n="chip-ai">Carian Makna AI</span></b></div>
+      <div class="float-chip fc-2">📖 <b><span data-i18n="chip-syarah">Syarah &amp; Darjat</span></b></div>
+    </div>
+  </div>
+  <div class="scroll-hint"><span data-i18n="scroll">SKROL</span><span></span></div>
+</section>
+
+<!-- tangkap layar -->
+<section class="showcase" id="tampil">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker" data-i18n="shots-kicker">Antaramuka</div>
+      <h2 data-i18n="shots-title">Direka untuk Membaca,<br>Bukan Sekadar Mencari</h2>
+      <p data-i18n="shots-sub">Tema <b>Aqua Glass</b> dengan rak digital interaktif, susunan dwibahasa Arab‑Melayu, dan panel statistik yang bersih.</p>
+    </div>
+    <div class="tabs reveal" id="tabBtns">
+      <button class="tab active" data-tab="home"><span data-i18n="tab-home">🏠 Halaman Utama</span></button>
+      <button class="tab" data-tab="rak"><span data-i18n="tab-rak">📚 Rak 9 Kitab</span></button>
+      <button class="tab" data-tab="senarai"><span data-i18n="tab-list">📄 Senarai Hadis</span></button>
+      <button class="tab" data-tab="carian"><span data-i18n="tab-search">🔍 Carian</span></button>
+      <button class="tab" data-tab="detail"><span data-i18n="tab-detail">📖 Detail Hadis</span></button>
+    </div>
+    <div class="shot-stage reveal">
+      <div class="shot active" id="shot-home">
+        <div class="shot-frame"><img loading="lazy" src="img/app-home.webp" alt="Halaman utama"></div>
+        <p class="shot-cap" data-i18n="cap-home"><b>Split Command Center</b> — carian di tengah, jalan pantas &amp; rak kitab di sisi</p>
+      </div>
+      <div class="shot" id="shot-rak">
+        <div class="shot-frame"><img loading="lazy" src="img/app-9kitab.webp" alt="Rak 9 kitab"></div>
+        <p class="shot-cap" data-i18n="cap-rak"><b>Rak Digital Interaktif</b> — jelajah semua 9 kitab seperti rak buku sebenar</p>
+      </div>
+      <div class="shot" id="shot-senarai">
+        <div class="shot-frame"><img loading="lazy" src="img/app-senarai.webp" alt="Senarai hadis"></div>
+        <p class="shot-cap" data-i18n="cap-list"><b>Gaya Dwibahasa</b> — terjemahan kiri, petikan Arab kanan, selari ayat demi ayat</p>
+      </div>
+      <div class="shot" id="shot-carian">
+        <div class="shot-frame"><img loading="lazy" src="img/app-carian.webp" alt="Hasil carian"></div>
+        <p class="shot-cap" data-i18n="cap-search"><b>Kata Kunci + Makna AI</b> — dua enjin mencari serentak, jawapan draf di atas</p>
+      </div>
+      <div class="shot" id="shot-detail">
+        <div class="shot-frame"><img loading="lazy" src="img/app-detail.webp" alt="Detail hadis"></div>
+        <p class="shot-cap" data-i18n="cap-detail"><b>Detail lengkap</b> — Arab · transliterasi · 3 bahasa · darjat · syarah · butang Kongsi/Salin/Lapor</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ciri -->
+<section id="ciri">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker" data-i18n="feat-kicker">Ciri Utama</div>
+      <h2 data-i18n="feat-title">Segalanya untuk Belajar Hadis</h2>
+      <p data-i18n="feat-sub">Gabungan carian moden, sumber berautoriti dan susun atur yang selesa untuk pengajian harian dan penyelidikan.</p>
+    </div>
+    <div class="ciri-grid">
+      <div class="ciri reveal"><div class="ico">🔍</div><h3 data-i18n="f1-h">Carian Ghaib &amp; Makna AI</h3><p class="quote" data-i18n="f1-q">Tanya makna, bukan sekadar perkataan.</p><p data-i18n="f1-p">Carian kata kunci (FTS5) dan carian semantik AI berjalan <b>serentak</b> — cari ikut maksud, bukan sekadar ejaan. Jawapan draf AI dipaparkan di atas hasil.</p><span class="tag" data-i18n="f1-tag">e5‑small · FAISS</span></div>
+      <div class="ciri reveal"><div class="ico">🌐</div><h3 data-i18n="f2-h">4 Bahasa Selari</h3><p data-i18n="f2-p">Arab, Melayu, Indonesia dan Inggeris. Susunan dua lajur dengan teks terjemahan sentiasa sejajar dengan petikan Arab (RTL). Terjemahan Melayu &amp; Indonesia lengkap 100%; Inggeris 51%.</p><span class="tag" data-i18n="f2-tag">Inggeris 51% · 2 gaya transliterasi</span></div>
+      <div class="ciri reveal"><div class="ico">⭐</div><h3 data-i18n="f3-h">Darjat &amp; Syarah Ulama</h3><p data-i18n="f3-p">63,930 klasifikasi Sahih/Hasan/Da'if mengikut penilaian ulama hadis moden — dipaparkan <b>sebagaimana adanya, tanpa memilih</b> antara pendapat yang berbeza. Disertai huraian ringkas untuk 4,237 hadis.</p><span class="tag" data-i18n="f3-tag">Darjat mengikut sumber</span></div>
+      <div class="ciri reveal"><div class="ico">📚</div><h3 data-i18n="f4-h">9 Kitab Kutub al‑Tis'ah</h3><p data-i18n="f4-p">Bukhari, Muslim, Abu Daud, Tirmizi, Nasa'i, Ibnu Majah, Ahmad, Darimi dan Malik — lengkap dengan pembahagian bab untuk navigasi tema.</p><span class="tag" data-i18n="f4-tag">31,322 bab</span></div>
+      <div class="ciri reveal"><div class="ico">⭐</div><h3 data-i18n="f5-h">Penanda Buku &amp; Sejarah</h3><p data-i18n="f5-p">Simpan hadis kegemaran, jejak sejarah bacaan, dan lompat terus ke hadis dengan pintasan <b>Ctrl+G</b> atau taip <b>B433</b>.</p><span class="tag" data-i18n="f5-tag">B949 sambung baca</span></div>
+      <div class="ciri reveal"><div class="ico">📴</div><h3 data-i18n="f6-h">Offline &amp; Privasi</h3><p class="quote" data-i18n="f6-q">Rujuk hadis tanpa internet, tanpa wang.</p><p data-i18n="f6-p">Semua data disimpan secara tempatan dalam SQLite. Tiada akaun, tiada iklan, tiada internet diperlukan selepas pemasangan.</p><span class="tag" data-i18n="f6-tag">Sumber terbuka data</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- rak 9 kitab -->
+<section class="kitab" id="kitab">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker" data-i18n="rak-kicker">Perpustakaan</div>
+      <h2 data-i18n="rak-title">9 Kitab, Satu Rak</h2>
+      <p data-i18n="rak-sub">Seluruh himpunan Kutub al‑Tis'ah — daripada Sahih al‑Bukhari hingga Muwatta' Malik, boleh dijelajah ikut bab.</p>
+    </div>
+    <div class="rak">
+      <div class="rak-item reveal"><div class="book"><img class="cover" loading="lazy" src="img/bukh-ro.png" alt=""><span class="an">صحيح البخاري</span><span class="nm">Sahih Bukhari</span><span class="en">Imam al‑Bukhari</span></div></div>
+      <div class="rak-item reveal"><div class="book"><img class="cover" loading="lazy" src="img/muslim-ro.png" alt=""><span class="an">صحيح مسلم</span><span class="nm">Sahih Muslim</span><span class="en">Imam Muslim</span></div></div>
+      <div class="rak-item reveal"><div class="book"><span class="an">سنن أبي داود</span><img class="cover" loading="lazy" src="img/abudaud-ro.png" alt=""><span class="nm">Sunan Abu Daud</span><span class="en">Imam Abu Daud</span></div></div>
+      <div class="rak-item reveal"><div class="book"><span class="an">جامع الترمذي</span><img class="cover" loading="lazy" src="img/tirmizi-ro.png" alt=""><span class="nm">Jami' Tirmizi</span><span class="en">Imam Tirmizi</span></div></div>
+      <div class="rak-item reveal"><div class="book"><span class="an">سنن النسائي</span><img class="cover" loading="lazy" src="img/nasai-ro.png" alt=""><span class="nm">Sunan Nasa'i</span><span class="en">Imam Nasa'i</span></div></div>
+      <div class="rak-item reveal"><div class="book"><span class="an">سنن ابن ماجه</span><img class="cover" loading="lazy" src="img/iibn-majah-ro.png" alt=""><span class="nm">Sunan Ibnu Majah</span><span class="en">Imam Ibnu Majah</span></div></div>
+      <div class="rak-item reveal"><div class="book"><span class="an">مسند أحمد</span><img class="cover" loading="lazy" src="img/ahmad-ro.png" alt=""><span class="nm">Musnad Ahmad</span><span class="en">Imam Ahmad</span></div></div>
+      <div class="rak-item reveal"><div class="book"><span class="an">سنن الدارمي</span><img class="cover" loading="lazy" src="img/darimi-ro.png" alt=""><span class="nm">Sunan Darimi</span><span class="en">Imam Darimi</span></div></div>
+      <div class="rak-item reveal"><div class="book"><span class="an">موطأ مالك</span><img class="cover" loading="lazy" src="img/malik-ro.png" alt=""><span class="nm">Muwatta' Malik</span><span class="en">Imam Malik</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- kedudukan jujur -->
+<section class="kitab" id="bukan">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker" data-i18n="honest-kicker">Kedudukan Jujur</div>
+      <h2 data-i18n="honest-title">Apa yang PustakaHadith Bukan</h2>
+      <p data-i18n="honest-sub">Untuk bahan agama, jangkaan yang salah lebih berbahaya daripada ciri yang kurang. Jadi aplikasi ini jelas tentang peranannya.</p>
+    </div>
+    <div class="ciri-grid">
+      <div class="ciri reveal"><div class="ico">⚖️</div><h3 data-i18n="h1-h">Bukan Sumber Fatwa</h3><p data-i18n="h1-p">Aplikasi ini <b>tidak memberi hukum</b> dan tidak menjawab persoalan fiqh. Untuk keputusan agama, rujuk ulama bertauliah.</p><span class="tag" data-i18n="h1-tag">Teks sahaja</span></div>
+      <div class="ciri reveal"><div class="ico">🕵️</div><h3 data-i18n="h2-h">Bukan Alat Semakan Hadis Palsu</h3><p data-i18n="h2-p">Terhad kepada 9 kitab yang disebut. Hadis yang beredar di media sosial mungkin bukan daripada koleksi ini. Untuk semakan khusus, gunakan pangkalan data hadis daif/palsu.</p><span class="tag" data-i18n="h2-tag">9 kitab sahaja</span></div>
+      <div class="ciri reveal"><div class="ico">👨‍🏫</div><h3 data-i18n="h3-h">Bukan Pengganti Guru</h3><p data-i18n="h3-p">Memahami hadis memerlukan ilmu alat — konteks, sanad dan kaedah usul. Aplikasi menyediakan teks; ulama yang membimbing pemahaman.</p><span class="tag" data-i18n="h3-tag">Bimbingan pakar</span></div>
+    </div>
+    <p class="dl-note reveal" style="margin-top:34px" data-i18n="honest-note">Darjat hadis: ulama boleh berbeza pendapat tentang hadis yang sama. Aplikasi memaparkan <b>setiap penilaian sebagaimana adanya</b>, tanpa memilih antara mereka. Carian makna dijana mesin — ia alat carian, bukan tafsiran.</p>
+  </div>
+</section>
+
+<!-- band statistik -->
+<section class="band">
+  <div class="wrap">
+    <p class="band-tagline reveal" style="text-align:center; font-size:1.9rem; font-weight:800; letter-spacing:-.3px; margin-bottom:40px; color:var(--ttl)" data-i18n="band-line">62,169 Hadis. 9 Kitab. <span style="color:var(--tealL)">Percuma.</span></p>
+    <div class="band-grid">
+    <div class="band-item reveal"><div class="bnum">62,169</div><div class="blbl" data-i18n="ba1-lbl">Hadis Lengkap</div><div class="bnote" data-i18n="ba1-note">Teks Arab + terjemahan</div></div>
+    <div class="band-item reveal"><div class="bnum">63,930</div><div class="blbl" data-i18n="ba2-lbl">Rekod Darjat</div><div class="bnote" data-i18n="ba2-note">Penilaian ulama</div></div>
+    <div class="band-item reveal"><div class="bnum">31,322</div><div class="blbl" data-i18n="ba3-lbl">Pembahagian Bab</div><div class="bnote" data-i18n="ba3-note">Navigasi tema</div></div>
+    <div class="band-item reveal"><div class="bnum">4,237</div><div class="blbl" data-i18n="ba4-lbl">Huraian Ringkas</div><div class="bnote" data-i18n="ba4-note">Daripada sumber berautoriti</div></div>
+  </div>
+</section>
+
+<!-- muat turun -->
+<section id="muat-turun">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker" data-i18n="dl-kicker">Muat Turun</div>
+      <h2 data-i18n="dl-title">Pasang dalam Sekejap</h2>
+      <p data-i18n="dl-sub">Tanpa perlu Python atau persediaan rumit — jalankan terus dari Windows. Data anda dikekalkan semasa naik taraf.</p>
+    </div>
+    <div class="dl-grid">
+      <div class="dl-card reveal">
+        <span class="badge b-ready">SIAP · Windows 10/11</span>
+        <div class="dico">🛍️</div>
+        <h3 data-i18n="dl1-h">Microsoft Store (MSIX)</h3>
+        <p data-i18n="dl1-p">✅ <strong>v1.0.1 disahkan &amp; live</strong> di Microsoft Store dengan kemas kini automatik. MSIX v1.0.1 (814.8 MB, data hadis penuh).</p>
+        <a class="btn btn-primary" href="https://apps.microsoft.com/store/detail/9MWLXVH2ZC7Q?cid=DevShareMWAPCS" target="_blank" rel="noopener"><span class="ico">🛍️</span> <span data-i18n="dl1-btn">Buka Microsoft Store</span></a>
+      </div>
+      <div class="dl-card reveal">
+        <span class="badge b-ready">SIAP · Windows 10/11</span>
+        <div class="dico">📦</div>
+        <h3 data-i18n="dl2-h">Setup EXE</h3>
+        <p data-i18n="dl2-p">Pemasang Inno Setup berbahasa Melayu. Pilih lokasi pemasangan, buat pintasan desktop, terus guna.</p>
+        <a class="btn btn-primary" href="https://github.com/PustakaHadith/PustakaHadith/releases/download/v1.0.1/PustakaHadith-Setup-1.0.1-x64.exe"><span class="ico">⬇</span> <span data-i18n="dl2-btn">Muat Turun EXE</span></a>
+      </div>
+      <div class="dl-card reveal">
+        <span class="badge b-ready">SIAP · Windows 10/11</span>
+        <div class="dico">🗜️</div>
+        <h3 data-i18n="dl3-h">Portable 7z</h3>
+        <p data-i18n="dl3-p">Buka dengan 7‑Zip ke mana‑mana folder, jalankan <b>PustakaHadith.exe</b>. Tiada pemasangan — padam folder = selesai.</p>
+        <a class="btn btn-primary" href="https://github.com/PustakaHadith/PustakaHadith/releases/download/v1.0.1/PustakaHadith-portable-1.0.1-x64.7z"><span class="ico">⬇</span> <span data-i18n="dl3-btn">Muat Turun 7z</span></a>
+      </div>
+    </div>
+    <p class="dl-note reveal" data-i18n="dl-note">Versi 1.0.1 · Muat turun 0.8–1.1 GB (data hadis disertakan) · RAM minimum 4 GB · Setelah dimuat turun, semua berfungsi tanpa internet.</p>
+  </div>
+</section>
+
+<!-- hubungi -->
+<section id="hubungi">
+  <div class="wrap">
+    <div class="section-head reveal">
+      <div class="kicker" data-i18n="con-kicker">Hubungi</div>
+      <h2 data-i18n="con-title">Hubungi Kami</h2>
+      <p data-i18n="con-sub">Ada pertanyaan, cadangan atau masalah? Kami sedia membantu.</p>
+    </div>
+    <div class="hubungi-grid">
+      <div class="hubungi-info reveal">
+        <h3 data-i18n="con-info-h">Maklumat Hubungi</h3>
+        <div class="hubungi-item">
+          <div class="ico">📧</div>
+          <div class="txt"><b data-i18n="con-email">Emel</b>info2@pustakahadith.my</div>
+        </div>
+        <div class="hubungi-item">
+          <div class="ico"><svg viewBox="0 0 16 16" width="24" height="24" fill="currentColor"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg></div>
+          <div class="txt"><b data-i18n="con-github">GitHub</b><a href="https://github.com/PustakaHadith/PustakaHadith" target="_blank" rel="noopener">PustakaHadith/PustakaHadith</a></div>
+        </div>
+        <div class="hubungi-item">
+          <div class="ico">💻</div>
+          <div class="txt"><b data-i18n="con-os">Sumber Terbuka</b><span data-i18n="con-os-txt">Semua kod di GitHub — boleh fork, sumbang &amp; guna</span></div>
+        </div>
+        <a class="btn btn-primary" href="mailto:info2@pustakahadith.my" style="margin-top:12px"><span class="ico">✉</span> <span data-i18n="con-btn">E-mel Kami</span></a>
+      </div>
+      <div class="hubungi-form reveal">
+        <h3 data-i18n="con-form-h">Hantar Mesej</h3>
+        <form onsubmit="event.preventDefault(); window.location.href='mailto:info2@pustakahadith.my?subject='+encodeURIComponent(document.getElementById('f-subject').value)+'&body='+encodeURIComponent('Nama: '+document.getElementById('f-name').value+'%0A%0A'+document.getElementById('f-msg').value);">
+          <div class="form-group">
+            <label for="f-name" data-i18n="con-name">Nama</label>
+            <input type="text" id="f-name" placeholder="Nama anda" data-i18n-ph="con-name-ph" required>
+          </div>
+          <div class="form-group">
+            <label for="f-subject" data-i18n="con-subject">Tajuk</label>
+            <input type="text" id="f-subject" placeholder="Tajuk mesej" data-i18n-ph="con-subject-ph" required>
+          </div>
+          <div class="form-group">
+            <label for="f-msg" data-i18n="con-msg">Mesej</label>
+            <textarea id="f-msg" placeholder="Tulis mesej anda di sini..." data-i18n-ph="con-msg-ph" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary"><span class="ico">📤</span> <span data-i18n="con-send">Hantar</span></button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- footer -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div class="foot-brand">
+        <a class="brand" href="#"><img src="img/logo.png" alt="PustakaHadith"><span><span class="b-p">Pustaka</span><span class="b-h">Hadith</span></span></a>
+        <p data-i18n="foot-brand">Dibina di atas data terbuka — teks hadis serta terjemahan Melayu &amp; Indonesia daripada <b>hadis.my</b>, terjemahan Inggeris &amp; darjat daripada koleksi <b>domain awam</b> (sunnah.com), dan huraian ringkas daripada <b>sumber berautoriti</b> yang dipaparkan dengan atribusi.</p>
+      </div>
+      <div class="foot-cols">
+        <div class="foot-col">
+          <h4 data-i18n="foot-prod">Produk</h4>
+          <a href="#tampil"><span data-i18n="foot-shots">Tangkap Layar</span></a>
+          <a href="#ciri"><span data-i18n="foot-feat">Ciri Utama</span></a>
+          <a href="#kitab"><span data-i18n="foot-books">9 Kitab</span></a>
+          <a href="#muat-turun"><span data-i18n="foot-dl">Muat Turun</span></a>
+          <a href="#hubungi"><span data-i18n="foot-contact">Hubungi</span></a>
+        </div>
+        <div class="foot-col">
+          <h4 data-i18n="foot-special">Khas</h4>
+          <a href="#"><span data-i18n="foot-ai">Carian Makna AI</span></a>
+          <a href="#"><span data-i18n="foot-grade">Darjat Ulama</span></a>
+          <a href="#"><span data-i18n="foot-syarah">Syarah &amp; Komentar</span></a>
+          <a href="#"><span data-i18n="foot-bookmark">Penanda Buku</span></a>
+        </div>
+        <div class="foot-col">
+          <h4 data-i18n="foot-source">Sumber</h4>
+          <a href="https://github.com/PustakaHadith/PustakaHadith" target="_blank" rel="noopener">
+            <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" style="vertical-align:-2px; margin-right:6px" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
+            <span data-i18n="foot-gh">GitHub</span>
+          </a>
+          <a href="#"><span data-i18n="foot-docs">Dokumentasi</span></a>
+          <a href="#"><span data-i18n="foot-update">Kemas Kini</span></a>
+          <a href="#"><span data-i18n="foot-license">Lesen Data</span></a>
+        </div>
+      </div>
+    </div>
+    <div class="copyright" data-i18n="foot-copy">© 2026 PustakaHadith · Aplikasi desktop percuma yang berjalan sepenuhnya tanpa internet · Data hadis daripada hadis.my, terjemahan Inggeris &amp; darjat daripada koleksi domain awam · Huraian ringkas daripada sumber berautoriti dengan atribusi · Untuk kebenaran pengedaran komersial, hubungi <b>info2@pustakahadith.my</b></div>
+  </div>
+</footer>
+
+<script>
+// ---------- dwibahasa MS/EN ----------
+const TRANS={
+"nav-home":{"ms":"Utama","en":"Home"},
+"nav-shots":{"ms":"Tangkap Layar","en":"Screenshots"},
+"nav-features":{"ms":"Ciri Utama","en":"Features"},
+"nav-books":{"ms":"9 Kitab","en":"9 Books"},
+"nav-contact":{"ms":"Hubungi","en":"Contact"},
+"nav-download":{"ms":"Muat Turun","en":"Download"},
+"hero-eyebrow":{"ms":"Aplikasi Desktop Carian Hadis — Percuma &amp; Luar Talian","en":"Hadith Search Desktop App — Free &amp; Offline"},
+"hero-title":{"ms":"62,169 Hadis<br>dari 9 Kitab Utama,<br><span class=\"grad\">Sekali Tayang.</span>","en":"62,169 Hadith<br>from 9 Major Books,<br><span class=\"grad\">At a Glance.</span>"},
+"hero-sub":{"ms":"Rujukan digital <b>9 kitab hadis (Kutub al-Tis'ah)</b> dalam Bahasa Melayu — dibina untuk <b>pelajar, pengkaji, peminat hadis dan pengguna awam</b>. Teks Arab penuh, terjemahan Melayu · Indonesia · Inggeris, transliterasi, darjat ulama, huraian ringkas dan carian makna AI. Semuanya <b>berfungsi sepenuhnya tanpa internet</b>.","en":"A digital reference for <b>9 hadith books (Kutub al-Tis'ah)</b> built for <b>students, researchers, hadith enthusiasts and the general public</b>. Full Arabic text, Malay · Indonesian · English translations, transliteration, scholars' grading, concise commentary and AI meaning search. Everything works <b>fully offline</b>."},
+"cta-download":{"ms":"Muat Turun Percuma","en":"Free Download"},
+"cta-view":{"ms":"Lihat Tangkap Layar","en":"View Screenshots"},
+"stat-hadith":{"ms":"Hadis","en":"Hadith"},
+"stat-books":{"ms":"Kitab","en":"Books"},
+"stat-lang":{"ms":"Bahasa","en":"Languages"},
+"stat-grade":{"ms":"Klasifikasi Darjat","en":"Grade Classifications"},
+"alt-home":{"ms":"PustakaHadith — Halaman Utama","en":"PustakaHadith — Home Screen"},
+"chip-ai":{"ms":"Carian Makna AI","en":"AI Meaning Search"},
+"chip-syarah":{"ms":"Syarah &amp; Darjat","en":"Commentary &amp; Grades"},
+"scroll":{"ms":"SKROL","en":"SCROLL"},
+"shots-kicker":{"ms":"Antaramuka","en":"Interface"},
+"shots-title":{"ms":"Direka untuk Membaca,<br>Bukan Sekadar Mencari","en":"Designed for Reading,<br>Not Just Searching"},
+"shots-sub":{"ms":"Tema <b>Aqua Glass</b> dengan rak digital interaktif, susunan dwibahasa Arab‑Melayu, dan panel statistik yang bersih.","en":"An <b>Aqua Glass</b> theme with an interactive digital shelf, side-by-side Arabic–Malay layout, and clean statistics panels."},
+"tab-home":{"ms":"🏠 Halaman Utama","en":"🏠 Home"},
+"tab-rak":{"ms":"📚 Rak 9 Kitab","en":"📚 9-Book Shelf"},
+"tab-list":{"ms":"📄 Senarai Hadis","en":"📄 Hadith List"},
+"tab-search":{"ms":"🔍 Carian","en":"🔍 Search"},
+"tab-detail":{"ms":"📖 Detail Hadis","en":"📖 Hadith Detail"},
+"cap-home":{"ms":"<b>Split Command Center</b> — carian di tengah, jalan pantas &amp; rak kitab di sisi","en":"<b>Split Command Center</b> — search in the center, quick access and the book shelf on the side"},
+"cap-rak":{"ms":"<b>Rak Digital Interaktif</b> — jelajah semua 9 kitab seperti rak buku sebenar","en":"<b>Interactive Digital Shelf</b> — browse all 9 books like a real bookshelf"},
+"cap-list":{"ms":"<b>Gaya Dwibahasa</b> — terjemahan kiri, petikan Arab kanan, selari ayat demi ayat","en":"<b>Bilingual Layout</b> — translation on the left, Arabic on the right, aligned verse by verse"},
+"cap-search":{"ms":"<b>Kata Kunci + Makna AI</b> — dua enjin mencari serentak, jawapan draf di atas","en":"<b>Keyword + AI Meaning</b> — two engines search simultaneously, draft answers on top"},
+"cap-detail":{"ms":"<b>Detail lengkap</b> — Arab · transliterasi · 3 bahasa · darjat · syarah · butang Kongsi/Salin/Lapor","en":"<b>Complete Detail</b> — Arabic · transliteration · 3 languages · grading · commentary · Share/Copy/Report buttons"},
+"feat-kicker":{"ms":"Ciri Utama","en":"Key Features"},
+"feat-title":{"ms":"Segalanya untuk Belajar Hadis","en":"Everything for Studying Hadith"},
+"feat-sub":{"ms":"Gabungan carian moden, sumber berautoriti dan susun atur yang selesa untuk pengajian harian dan penyelidikan.","en":"A blend of modern search, authoritative sources and a comfortable layout for daily study and research."},
+"f1-h":{"ms":"Carian Ghaib &amp; Makna AI","en":"Full-Text &amp; AI Meaning Search"},
+"f1-q":{"ms":"Tanya makna, bukan sekadar perkataan.","en":"Ask for meaning, not just words."},
+"f1-p":{"ms":"Carian kata kunci (FTS5) dan carian semantik AI berjalan <b>serentak</b> — cari ikut maksud, bukan sekadar ejaan. Jawapan draf AI dipaparkan di atas hasil.","en":"Keyword search (FTS5) and AI semantic search run <b>simultaneously</b> — search by meaning, not just spelling. A draft AI answer is shown above the results."},
+"f1-tag":{"ms":"e5‑small · FAISS","en":"e5-small · FAISS"},
+"f2-h":{"ms":"4 Bahasa Selari","en":"4 Languages Side by Side"},
+"f2-p":{"ms":"Arab, Melayu, Indonesia dan Inggeris. Susunan dua lajur dengan teks terjemahan sentiasa sejajar dengan petikan Arab (RTL). Terjemahan Melayu &amp; Indonesia lengkap 100%; Inggeris 51%.","en":"Arabic, Malay, Indonesian and English. A two-column layout keeps translations aligned with the Arabic (RTL) quote. Malay &amp; Indonesian translations are 100% complete; English 51%."},
+"f2-tag":{"ms":"Inggeris 51% · 2 gaya transliterasi","en":"English 51% · 2 transliteration styles"},
+"f3-h":{"ms":"Darjat &amp; Syarah Ulama","en":"Scholar Grading &amp; Commentary"},
+"f3-p":{"ms":"63,930 klasifikasi Sahih/Hasan/Da'if mengikut penilaian ulama hadis moden — dipaparkan <b>sebagaimana adanya, tanpa memilih</b> antara pendapat yang berbeza. Disertai huraian ringkas untuk 4,237 hadis.","en":"63,930 Sahih/Hasan/Da'if classifications by modern hadith scholars — shown <b>as-is, without choosing</b> between differing opinions. Brief commentary for 4,237 hadith."},
+"f3-tag":{"ms":"Darjat mengikut sumber","en":"Grading by source"},
+"f4-h":{"ms":"9 Kitab Kutub al‑Tis'ah","en":"9 Books of Kutub al-Tis'ah"},
+"f4-p":{"ms":"Bukhari, Muslim, Abu Daud, Tirmizi, Nasa'i, Ibnu Majah, Ahmad, Darimi dan Malik — lengkap dengan pembahagian bab untuk navigasi tema.","en":"Bukhari, Muslim, Abu Dawud, Tirmidhi, Nasa'i, Ibn Majah, Ahmad, Darimi and Malik — complete with chapter divisions for topical navigation."},
+"f4-tag":{"ms":"31,322 bab","en":"31,322 chapters"},
+"f5-h":{"ms":"Penanda Buku &amp; Sejarah","en":"Bookmarks &amp; History"},
+"f5-p":{"ms":"Simpan hadis kegemaran, jejak sejarah bacaan, dan lompat terus ke hadis dengan pintasan <b>Ctrl+G</b> atau taip <b>B433</b>.","en":"Save favorite hadith, track reading history, and jump straight to a hadith with <b>Ctrl+G</b> or by typing <b>B433</b>."},
+"f5-tag":{"ms":"B949 sambung baca","en":"B949 continue reading"},
+"f6-h":{"ms":"Offline &amp; Privasi","en":"Offline &amp; Private"},
+"f6-q":{"ms":"Rujuk hadis tanpa internet, tanpa wang.","en":"Read hadith without internet, without cost."},
+"f6-p":{"ms":"Semua data disimpan secara tempatan dalam SQLite. Tiada akaun, tiada iklan, tiada internet diperlukan selepas pemasangan.","en":"All data is stored locally in SQLite. No account, no ads, no internet needed after installation."},
+"f6-tag":{"ms":"Sumber terbuka data","en":"Open data source"},
+"rak-kicker":{"ms":"Perpustakaan","en":"Library"},
+"rak-title":{"ms":"9 Kitab, Satu Rak","en":"9 Books, One Shelf"},
+"rak-sub":{"ms":"Seluruh himpunan Kutub al‑Tis'ah — daripada Sahih al‑Bukhari hingga Muwatta' Malik, boleh dijelajah ikut bab.","en":"The entire Kutub al-Tis'ah collection — from Sahih al-Bukhari to Muwatta' Malik — browsable by chapter."},
+"honest-kicker":{"ms":"Kedudukan Jujur","en":"Honest Positioning"},
+"honest-title":{"ms":"Apa yang PustakaHadith Bukan","en":"What PustakaHadith Is Not"},
+"honest-sub":{"ms":"Untuk bahan agama, jangkaan yang salah lebih berbahaya daripada ciri yang kurang. Jadi aplikasi ini jelas tentang peranannya.","en":"For religious material, wrong expectations are more dangerous than missing features. So this app is clear about its role."},
+"h1-h":{"ms":"Bukan Sumber Fatwa","en":"Not a Source of Fatwa"},
+"h1-p":{"ms":"Aplikasi ini <b>tidak memberi hukum</b> dan tidak menjawab persoalan fiqh. Untuk keputusan agama, rujuk ulama bertauliah.","en":"This app <b>does not issue rulings</b> and does not answer fiqh questions. For religious decisions, consult qualified scholars."},
+"h1-tag":{"ms":"Teks sahaja","en":"Text only"},
+"h2-h":{"ms":"Bukan Alat Semakan Hadis Palsu","en":"Not a Tool to Verify Fabricated Hadith"},
+"h2-p":{"ms":"Terhad kepada 9 kitab yang disebut. Hadis yang beredar di media sosial mungkin bukan daripada koleksi ini. Untuk semakan khusus, gunakan pangkalan data hadis daif/palsu.","en":"Limited to the 9 books mentioned. Hadith circulating on social media may not be in this collection. For specific checks, use a database of weak/forged hadith."},
+"h2-tag":{"ms":"9 kitab sahaja","en":"9 books only"},
+"h3-h":{"ms":"Bukan Pengganti Guru","en":"Not a Substitute for a Teacher"},
+"h3-p":{"ms":"Memahami hadis memerlukan ilmu alat — konteks, sanad dan kaedah usul. Aplikasi menyediakan teks; ulama yang membimbing pemahaman.","en":"Understanding hadith requires tool knowledge — context, chain and usul methodology. The app provides texts; scholars guide understanding."},
+"h3-tag":{"ms":"Bimbingan pakar","en":"Expert guidance"},
+"honest-note":{"ms":"Darjat hadis: ulama boleh berbeza pendapat tentang hadis yang sama. Aplikasi memaparkan <b>setiap penilaian sebagaimana adanya</b>, tanpa memilih antara mereka. Carian makna dijana mesin — ia alat carian, bukan tafsiran.","en":"Hadith grading: scholars may differ on the same hadith. The app shows <b>each evaluation as-is</b>, without choosing between them. AI meaning search is machine-generated — it is a search tool, not interpretation."},
+"band-line":{"ms":"62,169 Hadis. 9 Kitab. <span style=\"color:var(--tealL)\">Percuma.</span>","en":"62,169 Hadith. 9 Books. <span style=\"color:var(--tealL)\">Free.</span>"},
+"ba1-lbl":{"ms":"Hadis Lengkap","en":"Complete Hadith"},
+"ba1-note":{"ms":"Teks Arab + terjemahan","en":"Arabic text + translations"},
+"ba2-lbl":{"ms":"Rekod Darjat","en":"Grading Records"},
+"ba2-note":{"ms":"Penilaian ulama","en":"Scholars' evaluations"},
+"ba3-lbl":{"ms":"Pembahagian Bab","en":"Chapter Divisions"},
+"ba3-note":{"ms":"Navigasi tema","en":"Thematic navigation"},
+"ba4-lbl":{"ms":"Huraian Ringkas","en":"Brief Commentaries"},
+"ba4-note":{"ms":"Daripada sumber berautoriti","en":"From authoritative sources"},
+"dl-kicker":{"ms":"Muat Turun","en":"Download"},
+"dl-title":{"ms":"Pasang dalam Sekejap","en":"Install in Minutes"},
+"dl-sub":{"ms":"Tanpa perlu Python atau persediaan rumit — jalankan terus dari Windows. Data anda dikekalkan semasa naik taraf.","en":"No Python or complex setup needed — run directly on Windows. Your data is kept during upgrades."},
+"dl1-h":{"ms":"Microsoft Store (MSIX)","en":"Microsoft Store (MSIX)"},
+"dl1-p":{"ms":"✅ v1.0.1 disahkan &amp; live di Microsoft Store dengan kemas kini automatik. MSIX v1.0.1 (814.8 MB, data hadis penuh).","en":"✅ v1.0.1 certified &amp; live on Microsoft Store with automatic updates. MSIX v1.0.1 (814.8 MB, full hadith data)."},
+"dl1-btn":{"ms":"Buka Microsoft Store","en":"Open Microsoft Store"},
+"dl2-h":{"ms":"Setup EXE","en":"Setup EXE"},
+"dl2-p":{"ms":"Pemasang Inno Setup berbahasa Melayu. Pilih lokasi pemasangan, buat pintasan desktop, terus guna.","en":"Inno Setup installer in Malay. Choose install location, create desktop shortcut, start using it."},
+"dl2-btn":{"ms":"Muat Turun EXE","en":"Download EXE"},
+"dl3-h":{"ms":"Portable 7z","en":"Portable 7z"},
+"dl3-p":{"ms":"Buka dengan 7‑Zip ke mana‑mana folder, jalankan <b>PustakaHadith.exe</b>. Tiada pemasangan — padam folder = selesai.","en":"Extract with 7-Zip into any folder, run <b>PustakaHadith.exe</b>. No installation — delete the folder and it's gone."},
+"dl3-btn":{"ms":"Muat Turun 7z","en":"Download 7z"},
+"dl-note":{"ms":"Versi 1.0.1 · Muat turun 0.8–1.1 GB (data hadis disertakan) · RAM minimum 4 GB · Setelah dimuat turun, semua berfungsi tanpa internet.","en":"Version 1.0.1 · Download 0.8–1.1 GB (hadith data included) · Minimum 4 GB RAM · Once downloaded, everything works offline."},
+"con-kicker":{"ms":"Hubungi","en":"Contact"},
+"con-title":{"ms":"Hubungi Kami","en":"Contact Us"},
+"con-sub":{"ms":"Ada pertanyaan, cadangan atau masalah? Kami sedia membantu.","en":"Questions, suggestions or issues? We're here to help."},
+"con-info-h":{"ms":"Maklumat Hubungi","en":"Contact Details"},
+"con-email":{"ms":"Emel","en":"Email"},
+"con-github":{"ms":"GitHub","en":"GitHub"},
+"con-os":{"ms":"Sumber Terbuka","en":"Open Source"},
+"con-os-txt":{"ms":"Semua kod di GitHub — boleh fork, sumbang &amp; guna","en":"All code on GitHub — fork, contribute &amp; use"},
+"con-btn":{"ms":"E-mel Kami","en":"Email Us"},
+"con-form-h":{"ms":"Hantar Mesej","en":"Send a Message"},
+"con-name":{"ms":"Nama","en":"Name"},
+"con-name-ph":{"ms":"Nama anda","en":"Your name"},
+"con-subject":{"ms":"Tajuk","en":"Subject"},
+"con-subject-ph":{"ms":"Tajuk mesej","en":"Message subject"},
+"con-msg":{"ms":"Mesej","en":"Message"},
+"con-msg-ph":{"ms":"Tulis mesej anda di sini...","en":"Write your message here..."},
+"con-send":{"ms":"Hantar","en":"Send"},
+"foot-brand":{"ms":"Dibina di atas data terbuka — teks hadis serta terjemahan Melayu &amp; Indonesia daripada <b>hadis.my</b>, terjemahan Inggeris &amp; darjat daripada koleksi <b>domain awam</b> (sunnah.com), dan huraian ringkas daripada <b>sumber berautoriti</b> yang dipaparkan dengan atribusi.","en":"Built on open data — hadith text and Malay &amp; Indonesian translations from <b>hadis.my</b>, English translations &amp; grading from <b>public domain</b> collections (sunnah.com), and concise commentary from <b>authoritative sources</b> shown with attribution."},
+"foot-prod":{"ms":"Produk","en":"Product"},
+"foot-shots":{"ms":"Tangkap Layar","en":"Screenshots"},
+"foot-feat":{"ms":"Ciri Utama","en":"Features"},
+"foot-books":{"ms":"9 Kitab","en":"9 Books"},
+"foot-dl":{"ms":"Muat Turun","en":"Download"},
+"foot-contact":{"ms":"Hubungi","en":"Contact"},
+"foot-special":{"ms":"Khas","en":"Special"},
+"foot-ai":{"ms":"Carian Makna AI","en":"AI Meaning Search"},
+"foot-grade":{"ms":"Darjat Ulama","en":"Scholar Grading"},
+"foot-syarah":{"ms":"Syarah &amp; Komentar","en":"Commentary"},
+"foot-bookmark":{"ms":"Penanda Buku","en":"Bookmarks"},
+"foot-source":{"ms":"Sumber","en":"Sources"},
+"foot-gh":{"ms":"GitHub","en":"GitHub"},
+"foot-docs":{"ms":"Dokumentasi","en":"Documentation"},
+"foot-update":{"ms":"Kemas Kini","en":"Updates"},
+"foot-license":{"ms":"Lesen Data","en":"Data License"},
+"foot-copy":{"ms":"© 2026 PustakaHadith · Aplikasi desktop percuma yang berjalan sepenuhnya tanpa internet · Data hadis daripada hadis.my, terjemahan Inggeris &amp; darjat daripada koleksi domain awam · Huraian ringkas daripada sumber berautoriti dengan atribusi · Untuk kebenaran pengedaran komersial, hubungi <b>info2@pustakahadith.my</b>","en":"© 2026 PustakaHadith · Free desktop app that runs entirely offline · Hadith data from hadis.my, English translation &amp; grading from public domain collections · Brief commentary from authoritative sources with attribution · For commercial distribution permission, contact <b>info2@pustakahadith.my</b>"}
+};
+
+const LANG_KEY='ph-lang';
+function bacaLang(){
+  let s=null;
+  try{ s=localStorage.getItem(LANG_KEY); }catch(e){}
+  if(s==='ms'||s==='en') return s;
+  return (navigator.language||'').toLowerCase().startsWith('en')?'en':'ms';
+}
+function terapkanLang(l){
+  document.documentElement.lang=l;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const k=el.getAttribute('data-i18n');
+    if(TRANS[k]) el.innerHTML=TRANS[k][l];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const k=el.getAttribute('data-i18n-ph');
+    if(TRANS[k]) el.placeholder=TRANS[k][l];
+  });
+  document.querySelectorAll('[data-i18n-alt]').forEach(el=>{
+    const k=el.getAttribute('data-i18n-alt');
+    if(TRANS[k]) el.setAttribute('alt',TRANS[k][l]);
+  });
+  document.querySelectorAll('.lang-btn').forEach(b=>{
+    const on=(b.dataset.lang===l);
+    b.classList.toggle('active',on);
+    b.setAttribute('aria-pressed',on);
+  });
+  const ms_meta={title:"PustakaHadith — Perpustakaan Digital Hadis | 62,169 Hadis & 9 Kitab",desc:"PustakaHadith: perpustakaan digital 62,169 hadis daripada 9 kitab utama (Kutub al-Tis'ah) dengan carian kata kunci, carian makna AI, terjemahan 4 bahasa, darjat ulama dan syarah.",og:"PustakaHadith — 62,169 Hadis dari 9 Kitab Utama",locale:"ms_MY"};
+  const en_meta={title:"PustakaHadith — Digital Hadith Library | 62,169 Hadith & 9 Books",desc:"PustakaHadith: a free digital library of 62,169 hadith from 9 major books (Kutub al-Tis'ah) with keyword search, AI meaning search, 4-language translation, scholar grading and commentary.",og:"PustakaHadith — 62,169 Hadith from 9 Major Books",locale:"en_US"};
+  const m=(l==='en')?en_meta:ms_meta;
+  document.title=m.title;
+  document.querySelector('meta[name="description"]').setAttribute('content',m.desc);
+  document.querySelector('meta[property="og:title"]').setAttribute('content',m.og);
+  document.querySelector('meta[property="og:description"]').setAttribute('content',m.desc);
+  document.querySelector('meta[property="og:locale"]').setAttribute('content',m.locale);
+  document.querySelector('meta[name="twitter:title"]').setAttribute('content',m.og);
+  document.querySelector('meta[name="twitter:description"]').setAttribute('content',m.desc);
+}
+document.querySelectorAll('.lang-btn').forEach(b=>b.addEventListener('click',()=>{
+  const l=b.dataset.lang;
+  try{ localStorage.setItem(LANG_KEY,l); }catch(e){}
+  terapkanLang(l);
+}));
+terapkanLang(bacaLang());
+
+// ---------- Tab tangkap layar ----------
+const btns=document.querySelectorAll('.tab'), shots=document.querySelectorAll('.shot');
+btns.forEach(b=>b.addEventListener('click',()=>{
+  btns.forEach(x=>x.classList.remove('active')); b.classList.add('active');
+  shots.forEach(s=>s.classList.remove('active'));
+  document.getElementById('shot-'+b.dataset.tab).classList.add('active');
+}));
+// ---------- Reveal on scroll ----------
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in'); io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+// ---------- Menu mudah alih ----------
+const navLinks=document.querySelector('.nav-links'), burger=document.querySelector('.burger');
+function toggleNav(){
+  const open=navLinks.classList.toggle('open');
+  burger.classList.toggle('open',open);
+  burger.setAttribute('aria-expanded',open);
+}
+document.addEventListener('click',e=>{
+  if(navLinks.classList.contains('open') && !e.target.closest('.nav-inner')) {navLinks.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false');}
+});
+navLinks.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{navLinks.classList.remove('open'); burger.classList.remove('open'); burger.setAttribute('aria-expanded','false');}));
+window.addEventListener('resize',()=>{if(window.innerWidth>860){navLinks.classList.remove('open'); burger.classList.remove('open');}});
+</script>
+</body>
+</html>

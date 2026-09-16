@@ -1,0 +1,3 @@
+Options +FollowSymLinks
+RewriteEngine On
+RewriteRule ^(.*)$ https://pustakahadith.netlify.app/$1 [R=301,L]
