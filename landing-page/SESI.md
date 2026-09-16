@@ -458,3 +458,35 @@ Pindahkan `pustakahadith.my` daripada Netlify ke Cloudflare sepenuhnya.
 - Dashboard Cloudflare 2026 baru — "Caching" / "Purge Everything" sukar dicari (di bawah domain → Settings/Configuration, bukan menu kiri utama).
 - Build config: "Root directory" vs "Build output directory" — silap set → 404; kena betulkan & push trigger redeploy.
 - 522 error selepas tukar DNS → menunggu CNAME propagate + Pages custom domain diaktifkan.
+
+---
+
+## Sesi 24c (16 September): Upgrade Kod & Reka Bentuk Landing Page
+
+### Upgrade Kod
+1. **Preload/preconnect** — tambah `<link rel="preconnect">` & `<link rel="preload">` untuk logo + imej hero (lebih laju LCP).
+2. **Canonical tag** — `<link rel="canonical" href="https://pustakahadith.my">` (elak kandungan duplikat).
+3. **JSON-LD structured data** — `SoftwareApplication` schema untuk Google (nama, harga percuma, OS).
+4. **manifest.json** — fail baru untuk PWA (Add to Home Screen).
+5. **Cloudflare Speed Brain** — tidak dapat diaktifkan (tiada "Speed" dalam dashboard 2026).
+
+### Upgrade Reka Bentuk
+1. **Hero lebih dramatik** — gradient text lebih tebal (4 warna), butang CTA lebih besar (16px padding, gradient background), shadow lebih dalam.
+2. **Kad hover glow** — ciri & muat turun card: glow teal + shadow dalam (`cubic-bezier(.4,0,.2,1)`), translateY -8px.
+3. **Spasi lebih luas** — section padding 96px → 110px, section-head margin 60px → 66px.
+4. **Animasi smooth** — reveal: `translateY(32px) scale(.97)` → `cubic-bezier(.4,0,.2,1)`.
+5. **Gradient divider** — stat band: gradient teal pada `::before` & `::after` (ganti border solid).
+6. **Footer grid** — `display:grid` `1.2fr 2fr` (ganti flex), `foot-cols` → `grid-template-columns:repeat(3,1fr)`, tambah border-bottom pada heading.
+7. **Section divider** — `.showcase::before` gradient halus antara seksi.
+8. **Kicker glow** — `text-shadow` pada `.kicker`.
+
+### Jump to Top
+- Butang `↑` floating (penjuru kanan bawah), muncul selepas skrol 400px.
+- CSS: `position:fixed`, `border-radius:50%`, `cubic-bezier` transition.
+- JS: `scroll` event → toggle class `.show`, click → `scrollTo({top:0,behavior:'smooth'})`.
+- **Bug fix:** butang mesti didefinisikan SEBELUM skrip (`getElementById` gagal jika butang selepas skrip).
+
+### Status
+- ✅ Semua upgrade live di `pustakahadith.my` (HTTP 200, ~65KB).
+- ✅ Auto-deploy dari GitHub berfungsi.
+- ✅ Butang jump-to-top berfungsi.
