@@ -1,0 +1,9 @@
+{
+  "name": "PustakaHadith",
+  "short_name": "PustakaHadith",
+  "start_url": "https://pustakahadith.my",
+  "display": "standalone",
+  "background_color": "#0A1520",
+  "theme_color": "#3EC9B0",
+  "icons": [{ "src": "img/logo.png", "sizes": "192x192", "type": "image/png" }]
+}
