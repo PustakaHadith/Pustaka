@@ -435,3 +435,26 @@ Pindahkan `pustakahadith.my` daripada Netlify ke Cloudflare sepenuhnya.
 - OAuth token wrangler (`cfoat_XW`) **tidak boleh** cipta zon (403 `Invalid access token` untuk POST `/zones`).
 - Zon `pustakahadith.my` dicipta melalui **Pages → Custom domains** (bukan "Add a site").
 - Dashboard Cloudflare 2026: "Add a site" mungkin tiada pada sesetengah akaun; "Domains" hanya papar "Register a domain".
+
+### Tambahan Sesi 24b: DNS + GitHub + Buang Netlify
+
+**DNS:**
+- A record lama (`94.84.224.111`, `18.208.88.157`) dipadam → digantikan CNAME `pustakahadith.my → pustakahadith-landing.pages.dev` (proxy ON).
+- MX/TXT Zoho email tidak diubah.
+
+**GitHub Auto-deploy:**
+- Repo `PustakaHadith/Pustaka` disambung ke Cloudflare Pages (via GitHub OAuth).
+- Setiap push ke `main` → auto-deploy ke Pages.
+- Build config: Root directory = kosong, Build output = `landing-page`.
+
+**Buang Skrip Netlify:**
+- Skrip `/.netlify/scripts/hud` ditemui di hujung `index.html` (dari deploy lama wrangler Sesi 23).
+- Dipadam; push ke GitHub → deploy baru bersih.
+
+**Fix og:url:**
+- `pustakahadith.site.je` → `pustakahadith.my` (3 tempat dalam `index.html`).
+
+**Cabaran:**
+- Dashboard Cloudflare 2026 baru — "Caching" / "Purge Everything" sukar dicari (di bawah domain → Settings/Configuration, bukan menu kiri utama).
+- Build config: "Root directory" vs "Build output directory" — silap set → 404; kena betulkan & push trigger redeploy.
+- 522 error selepas tukar DNS → menunggu CNAME propagate + Pages custom domain diaktifkan.
