@@ -42,8 +42,8 @@
 - [x] **Kad Store dl1-p dikemas** ke "v1.0.2 disahkan &amp; live" (781.9 MB) — ms + en
 - [x] EXE/7z kekal v1.0.1 (tidak dibina semula) — pautan dl2/dl3 tidak berubah
 
-### Pending
-- [ ] Deploy semula landing page di Cloudflare dengan kad Store v1.0.2 (perlu arahan/sijil akses)
+### Pending (Sesi 28–29 — sudah diselesaikan dalam Sesi 33)
+- [x] Deploy semula landing page di Cloudflare dengan kad Store v1.0.2
 
 ---
 
@@ -59,8 +59,10 @@
   - dl-note → "Versi 1.0.2" / "Version 1.0.2"
   - dl1 Store kekal v1.0.2 ✅
 - [x] `PustakaHadith.iss` Source path → canonical `PustakaQH_dist`
+- [x] **Commit + push** landing page (`3525f54`) → Cloudflare auto-deploy
+- [x] **GitHub Release `v1.0.2`** — upload EXE + 7z; buang 3 asset v1.0.1 tersalah letak
+- [x] **Verifikasi live** — `https://pustakahadith.my` HTTP 200, pautan `.../v1.0.2/...` aktif
+- [x] Download EXE + 7z → HTTP 200, saiz betul
 
 ### Pending
-- [ ] GitHub Release v1.0.2 (upload EXE + 7z) — menunggu `gh auth login`
-- [ ] Commit + push landing page → Cloudflare auto-deploy — menunggu arahan
-- [ ] Verifikasi `https://pustakahadith.my` papar pautan v1.0.2 selepas deploy
+- [ ] (tiada — Sesi 33 selesai)
