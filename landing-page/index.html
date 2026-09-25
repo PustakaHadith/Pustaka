@@ -40,7 +40,7 @@
   --max:1160px;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth; scroll-padding-top:82px}
 body{
   font-family:'Segoe UI',system-ui,-apple-system,'Helvetica Neue',Arial,sans-serif;
   background:var(--page); color:var(--ttl); line-height:1.65;
@@ -555,11 +555,11 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
       <p data-i18n="feat-sub">Gabungan carian moden, sumber berautoriti dan susun atur yang selesa untuk pengajian harian dan penyelidikan.</p>
     </div>
     <div class="ciri-grid">
-      <div class="ciri reveal"><div class="ico">🔍</div><h3 data-i18n="f1-h">Carian Ghaib &amp; Makna AI</h3><p class="quote" data-i18n="f1-q">Tanya makna, bukan sekadar perkataan.</p><p data-i18n="f1-p">Carian kata kunci (FTS5) dan carian semantik AI berjalan <b>serentak</b> — cari ikut maksud, bukan sekadar ejaan. Jawapan draf AI dipaparkan di atas hasil.</p><span class="tag" data-i18n="f1-tag">e5‑small · FAISS</span></div>
+      <div class="ciri reveal" id="ciri-ai"><div class="ico">🔍</div><h3 data-i18n="f1-h">Carian Ghaib &amp; Makna AI</h3><p class="quote" data-i18n="f1-q">Tanya makna, bukan sekadar perkataan.</p><p data-i18n="f1-p">Carian kata kunci (FTS5) dan carian semantik AI berjalan <b>serentak</b> — cari ikut maksud, bukan sekadar ejaan. Jawapan draf AI dipaparkan di atas hasil.</p><span class="tag" data-i18n="f1-tag">e5‑small · FAISS</span></div>
       <div class="ciri reveal"><div class="ico">🌐</div><h3 data-i18n="f2-h">4 Bahasa Selari</h3><p data-i18n="f2-p">Arab, Melayu, Indonesia dan Inggeris. Susunan dua lajur dengan teks terjemahan sentiasa sejajar dengan petikan Arab (RTL). Terjemahan Melayu &amp; Indonesia lengkap 100%; Inggeris 51%.</p><span class="tag" data-i18n="f2-tag">Inggeris 51% · 2 gaya transliterasi</span></div>
-      <div class="ciri reveal"><div class="ico">⭐</div><h3 data-i18n="f3-h">Darjat &amp; Syarah Ulama</h3><p data-i18n="f3-p">63,930 klasifikasi Sahih/Hasan/Da'if mengikut penilaian ulama hadis moden — dipaparkan <b>sebagaimana adanya, tanpa memilih</b> antara pendapat yang berbeza. Disertai huraian ringkas untuk 4,237 hadis.</p><span class="tag" data-i18n="f3-tag">Darjat mengikut sumber</span></div>
+      <div class="ciri reveal" id="ciri-darjat"><div class="ico">⭐</div><h3 data-i18n="f3-h">Darjat &amp; Syarah Ulama</h3><p data-i18n="f3-p">63,930 klasifikasi Sahih/Hasan/Da'if mengikut penilaian ulama hadis moden — dipaparkan <b>sebagaimana adanya, tanpa memilih</b> antara pendapat yang berbeza. Disertai huraian ringkas untuk 4,237 hadis.</p><span class="tag" data-i18n="f3-tag">Darjat mengikut sumber</span></div>
       <div class="ciri reveal"><div class="ico">📚</div><h3 data-i18n="f4-h">9 Kitab Kutub al‑Tis'ah</h3><p data-i18n="f4-p">Bukhari, Muslim, Abu Daud, Tirmizi, Nasa'i, Ibnu Majah, Ahmad, Darimi dan Malik — lengkap dengan pembahagian bab untuk navigasi tema.</p><span class="tag" data-i18n="f4-tag">31,322 bab</span></div>
-      <div class="ciri reveal"><div class="ico">⭐</div><h3 data-i18n="f5-h">Penanda Buku &amp; Sejarah</h3><p data-i18n="f5-p">Simpan hadis kegemaran, jejak sejarah bacaan, dan lompat terus ke hadis dengan pintasan <b>Ctrl+G</b> atau taip <b>B433</b>.</p><span class="tag" data-i18n="f5-tag">B949 sambung baca</span></div>
+      <div class="ciri reveal" id="ciri-penanda"><div class="ico">⭐</div><h3 data-i18n="f5-h">Penanda Buku &amp; Sejarah</h3><p data-i18n="f5-p">Simpan hadis kegemaran, jejak sejarah bacaan, dan lompat terus ke hadis dengan pintasan <b>Ctrl+G</b> atau taip <b>B433</b>.</p><span class="tag" data-i18n="f5-tag">B949 sambung baca</span></div>
       <div class="ciri reveal"><div class="ico">📴</div><h3 data-i18n="f6-h">Offline &amp; Privasi</h3><p class="quote" data-i18n="f6-q">Rujuk hadis tanpa internet, tanpa wang.</p><p data-i18n="f6-p">Semua data disimpan secara tempatan dalam SQLite. Tiada akaun, tiada iklan, tiada internet diperlukan selepas pemasangan.</p><span class="tag" data-i18n="f6-tag">Sumber terbuka data</span></div>
     </div>
   </div>
@@ -802,10 +802,10 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
         </div>
         <div class="foot-col">
           <h4 data-i18n="foot-special">Khas</h4>
-          <a href="#"><span data-i18n="foot-ai">Carian Makna AI</span></a>
-          <a href="#"><span data-i18n="foot-grade">Darjat Ulama</span></a>
-          <a href="#"><span data-i18n="foot-syarah">Syarah &amp; Komentar</span></a>
-          <a href="#"><span data-i18n="foot-bookmark">Penanda Buku</span></a>
+          <a href="#ciri-ai" title="FTS5 + carian semantik AI (e5-small · FAISS)"><span data-i18n="foot-ai">Carian Makna AI</span></a>
+          <a href="#ciri-darjat" title="63,930 klasifikasi Sahih/Hasan/Da'if mengikut penilaian ulama"><span data-i18n="foot-grade">Darjat Ulama</span></a>
+          <a href="#ciri-darjat" title="Huraian ringkas untuk 4,237 hadis daripada sumber berautoriti"><span data-i18n="foot-syarah">Syarah &amp; Komentar</span></a>
+          <a href="#ciri-penanda" title="Simpan hadis kegemaran &amp; sejarah bacaan — Ctrl+G / B433"><span data-i18n="foot-bookmark">Penanda Buku</span></a>
         </div>
         <div class="foot-col">
           <h4 data-i18n="foot-source">Sumber</h4>
