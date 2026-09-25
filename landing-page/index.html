@@ -277,6 +277,7 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
 .foot-col h4{color:var(--ttl); font-size:.82rem; letter-spacing:1.5px; text-transform:uppercase; margin-bottom:16px; padding-bottom:10px; border-bottom:1px solid var(--bord)}
 .foot-col a{display:block; color:var(--muted); font-size:.88rem; margin-bottom:10px; transition:color .2s}
 .foot-col a:hover{color:var(--tealL)}
+.foot-col .foot-plain{display:block; color:var(--faint); font-size:.88rem; margin-bottom:10px; cursor:default}
 .copyright{text-align:center; color:var(--faint); font-size:.78rem; margin-top:38px; padding-top:20px; border-top:1px solid rgba(29,58,74,.5)}
 
 /* ---------- reveal on scroll ---------- */
@@ -804,7 +805,7 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
           <h4 data-i18n="foot-special">Khas</h4>
           <a href="#ciri-ai" title="FTS5 + carian semantik AI (e5-small · FAISS)"><span data-i18n="foot-ai">Carian Makna AI</span></a>
           <a href="#ciri-darjat" title="63,930 klasifikasi Sahih/Hasan/Da'if mengikut penilaian ulama"><span data-i18n="foot-grade">Darjat Ulama</span></a>
-          <a href="#ciri-darjat" title="Huraian ringkas untuk 4,237 hadis daripada sumber berautoriti"><span data-i18n="foot-syarah">Syarah &amp; Komentar</span></a>
+          <a href="#ciri-darjat" title="Huraian ringkas untuk 4,237 hadis daripada sumber berautoriti"><span data-i18n="foot-syarah">Syarah &amp; Huraian</span></a>
           <a href="#ciri-penanda" title="Simpan hadis kegemaran &amp; sejarah bacaan — Ctrl+G / B433"><span data-i18n="foot-bookmark">Penanda Buku</span></a>
         </div>
         <div class="foot-col">
@@ -813,9 +814,10 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
             <svg viewBox="0 0 16 16" width="14" height="14" fill="currentColor" style="vertical-align:-2px; margin-right:6px" aria-hidden="true"><path d="M8 0C3.58 0 0 3.58 0 8c0 3.54 2.29 6.53 5.47 7.59.4.07.55-.17.55-.38 0-.19-.01-.82-.01-1.49-2.01.37-2.53-.49-2.69-.94-.09-.23-.48-.94-.82-1.13-.28-.15-.68-.52-.01-.53.63-.01 1.08.58 1.23.82.72 1.21 1.87.87 2.33.66.07-.52.28-.87.51-1.07-1.78-.2-3.64-.89-3.64-3.95 0-.87.31-1.59.82-2.15-.08-.2-.36-1.02.08-2.12 0 0 .67-.21 2.2.82.64-.18 1.32-.27 2-.27s1.36.09 2 .27c1.53-1.04 2.2-.82 2.2-.82.44 1.1.16 1.92.08 2.12.51.56.82 1.27.82 2.15 0 3.07-1.87 3.75-3.65 3.95.29.25.54.73.54 1.48 0 1.07-.01 1.93-.01 2.2 0 .21.15.46.55.38A8.01 8.01 0 0016 8c0-4.42-3.58-8-8-8z"></path></svg>
             <span data-i18n="foot-gh">GitHub</span>
           </a>
-          <a href="#"><span data-i18n="foot-docs">Dokumentasi</span></a>
-          <a href="#"><span data-i18n="foot-update">Kemas Kini</span></a>
-          <a href="#"><span data-i18n="foot-license">Lesen Data</span></a>
+          <a href="https://github.com/PustakaHadith/PustakaHadith/tree/main/dokumen" target="_blank" rel="noopener"><span data-i18n="foot-docs">Dokumentasi</span></a>
+          <a href="#kemas-kini"><span data-i18n="foot-update">Kemas Kini</span></a>
+          <a href="https://github.com/PustakaHadith/PustakaHadith/blob/main/LICENSE" target="_blank" rel="noopener"><span data-i18n="foot-license">Lesen Data</span></a>
+          <span class="foot-plain" data-i18n="foot-bio">Biodata Penerbit</span>
         </div>
       </div>
     </div>
@@ -983,13 +985,14 @@ const TRANS={
 "foot-special":{"ms":"Khas","en":"Special"},
 "foot-ai":{"ms":"Carian Makna AI","en":"AI Meaning Search"},
 "foot-grade":{"ms":"Darjat Ulama","en":"Scholar Grading"},
-"foot-syarah":{"ms":"Syarah &amp; Komentar","en":"Commentary"},
+"foot-syarah":{"ms":"Syarah &amp; Huraian","en":"Commentary"},
 "foot-bookmark":{"ms":"Penanda Buku","en":"Bookmarks"},
 "foot-source":{"ms":"Sumber","en":"Sources"},
 "foot-gh":{"ms":"GitHub","en":"GitHub"},
 "foot-docs":{"ms":"Dokumentasi","en":"Documentation"},
 "foot-update":{"ms":"Kemas Kini","en":"Updates"},
 "foot-license":{"ms":"Lesen Data","en":"Data License"},
+"foot-bio":{"ms":"Biodata Penerbit","en":"Publisher Profile"},
 "foot-copy":{"ms":"© 2026 PustakaHadith · Aplikasi desktop percuma yang berjalan sepenuhnya tanpa internet · Data hadis daripada hadis.my, terjemahan Inggeris &amp; darjat daripada koleksi domain awam · Huraian ringkas daripada sumber berautoriti dengan atribusi · Untuk kebenaran pengedaran komersial, hubungi <b>info2@pustakahadith.my</b>","en":"© 2026 PustakaHadith · Free desktop app that runs entirely offline · Hadith data from hadis.my, English translation &amp; grading from public domain collections · Brief commentary from authoritative sources with attribution · For commercial distribution permission, contact <b>info2@pustakahadith.my</b>"}
 };
 
