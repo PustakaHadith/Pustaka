@@ -66,3 +66,55 @@
 
 ### Pending
 - [ ] (tiada — Sesi 33 selesai)
+
+---
+
+## Sesi 35 (25 September 2026) — 3 Section Baharu + Footer Lengkap
+
+Semua kerja **landing page sahaja**. 4 commit, semua sudah push (`bd4ce70..d616991` → Cloudflare auto-deploy).
+
+### Selesai
+
+**Section baharu (ikut mockup `mockup_tambah/mockup_3section.html` — diluluskan):**
+- [x] **`#mula` — Cara Guna 3 Langkah** (selepas Hero, sebelum `#tampil`)
+- [x] **`#soalan` — Soalan Lazim** — 6 item accordion (aria-expanded, buka satu-satu; item pertama dibuka) — antara "Kedudukan Jujur" sebelum band statistik
+- [x] **`#kemas-kini` — Changelog v1.0.2** (kad + badge LIVE + 4 item + pautan GitHub Releases) — sebelum `#muat-turun`
+- [x] CSS ketiga-tiga section + i18n ms/en penuh → **177 key, semua lengkap** (`node --check` lulus, 2 script)
+
+**Footer KHAS (`#ciri-ai` / `#ciri-darjat` / `#ciri-penanda` — kad Ciri dapat id):**
+- [x] 4 item `href="#"` → pautan ke kad Ciri + tooltip penjelasan
+- [x] `scroll-padding-top:82px` supaya anchor tak sembunyi bawah nav tetap
+
+**Footer Sumber:**
+- [x] Dokumentasi → GitHub `dokumen/`; Kemas Kini → `#kemas-kini`
+- [x] **Lesen Data → bukan pautan luar — modal kad penerangan** (4 baris: MIT · teks hadis hadis.my · terjemahan/darjat domain awam · huraian beratribusi + nota komersial; tutup via ✕/klik luar/ESC)
+- [x] Biodata Penerbit ditambah — **teks biasa tanpa pautan** (`.foot-plain`)
+- [x] "Syarah & Komentar" → **"Syarah & Huraian"** (KM: "komentar" kebiasaan BI)
+
+**Kad Microsoft Store (dl-card MSIX):**
+- [x] Badge rasmi **"Get it from Microsoft"** (`img/ms-badge-light.svg` dari get.microsoft.com — variant light sebab tema gelap) + pautan ke Store
+- [x] Lencana **ESRB "E" Everyone** (`img/esrb-everyone.svg` dari Wikimedia Commons)
+- [x] CSS `.dl-badges`
+
+**Betulan:**
+- [x] **Favicon tak muncul** — punca `href="/favicon.ico"` (absolut, gagal bila buka `file://`) → relatif `favicon.ico` + `apple-touch-icon.png`
+- [x] `img/store-logo.png` (tak guna) & `ms-badge-dark.svg` (tak guna) dipadam
+
+### Komitmen (push ke main)
+| Commit | Kandungan |
+|---|---|
+| `4e73dc0` | 3 section baharu + mockup + cloudflare.md |
+| `24f573f` | Footer KHAS bernaut + tooltip + scroll-padding |
+| `64d7326` | Footer Sumber pautan + Biodata Penerbit + Syarah & Huraian |
+| `d616991` | Badge MS Store + ESRB + favicon relatif + modal Lesen Data |
+
+### Semakan
+- [x] Latar `img/bg-globe.webp` kekal (`.globe-fixed` + div)
+- [x] Susunan section: hero → `#mula` → `#tampil` → `#ciri` → kitab → jujur → `#soalan` → statistik → `#kemas-kini` → `#muat-turun` → `#hubungi`
+- [x] i18n: semua `data-i18n` ada dalam TRANS; JS `node --check` lulus
+- [x] 3 `href="#"` tinggal — sengaja (logo brand ×2, nav "Utama" → ke atas)
+
+### Pending
+- [ ] Nav link ke 3 section baharu (tunggu arahan)
+- [ ] Biodata Penerbit — kandungan/isi (baru teks sahaja)
+- [ ] Verifikasi live selepas deploy Cloudflare (favicon + badge SVG + modal)
