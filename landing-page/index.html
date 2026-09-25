@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="icon" type="image/x-icon" href="/favicon.ico">
-<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
 <title>PustakaHadith — Perpustakaan Digital Hadis | 62,169 Hadis &amp; 9 Kitab</title>
 <meta name="description" content="PustakaHadith: perpustakaan digital 62,169 hadis daripada 9 kitab utama (Kutub al-Tis'ah) dengan carian kata kunci, carian makna AI, terjemahan 4 bahasa, darjat ulama dan syarah.">
 
@@ -246,6 +246,11 @@ section{padding:110px 0}
 .dl-card h3{font-size:1.1rem; font-weight:700}
 .dl-card p{color:var(--muted); font-size:.86rem; flex:1}
 .dl-card .btn{justify-content:center}
+.dl-badges{display:flex; align-items:center; justify-content:center; gap:16px; margin-top:4px}
+.dl-badges img{display:block; height:34px; width:auto}
+.dl-badges .esrb{height:48px}
+.dl-badges a{display:block; line-height:0; transition:opacity .2s}
+.dl-badges a:hover{opacity:.85}
 .dl-note{text-align:center; color:var(--faint); font-size:.82rem; margin-top:26px}
 
 /* ---------- hubungi ---------- */
@@ -279,6 +284,21 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
 .foot-col a:hover{color:var(--tealL)}
 .foot-col .foot-plain{display:block; color:var(--faint); font-size:.88rem; margin-bottom:10px; cursor:default}
 .copyright{text-align:center; color:var(--faint); font-size:.78rem; margin-top:38px; padding-top:20px; border-top:1px solid rgba(29,58,74,.5)}
+/* modal Lesen Data */
+.lic-modal{position:fixed; inset:0; z-index:300; display:flex; align-items:center; justify-content:center; padding:20px; background:rgba(4,10,16,.72); backdrop-filter:blur(6px); opacity:0; visibility:hidden; transition:opacity .25s, visibility .25s}
+.lic-modal.open{opacity:1; visibility:visible}
+.lic-card{position:relative; width:100%; max-width:520px; max-height:85vh; overflow-y:auto; background:var(--card); border:1px solid var(--bordL); border-radius:var(--radius); padding:28px 26px 24px; transform:translateY(14px); transition:transform .25s}
+.lic-modal.open .lic-card{transform:none}
+.lic-card .kicker{font-size:.72rem; font-weight:700; letter-spacing:2.5px; text-transform:uppercase; color:var(--teal); margin-bottom:6px}
+.lic-card h3{font-size:1.25rem; color:var(--ttl); margin-bottom:14px}
+.lic-rows{display:flex; flex-direction:column; gap:12px}
+.lic-row{background:var(--card2); border:1px solid var(--bord); border-radius:var(--radius-sm); padding:10px 14px}
+.lic-row b{display:block; font-size:.8rem; color:var(--tealL); margin-bottom:2px}
+.lic-row span{font-size:.86rem; color:var(--sec); line-height:1.55}
+.lic-note{margin-top:14px; font-size:.8rem; color:var(--faint); line-height:1.6}
+.lic-note a{color:var(--tealL)}
+.lic-x{position:absolute; top:12px; right:14px; width:32px; height:32px; border:0; border-radius:8px; background:transparent; color:var(--muted); font-size:1.3rem; cursor:pointer; transition:background .2s, color .2s}
+.lic-x:hover{background:var(--card2); color:var(--ttl)}
 
 /* ---------- reveal on scroll ---------- */
 .reveal{opacity:0; transform:translateY(32px) scale(.97); transition:opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1)}
@@ -717,6 +737,10 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
         <h3 data-i18n="dl1-h">Microsoft Store (MSIX)</h3>
         <p data-i18n="dl1-p">✅ <strong>v1.0.2 disahkan &amp; live</strong> di Microsoft Store dengan kemas kini automatik. MSIX v1.0.2 (781.9 MB, data hadis penuh).</p>
         <a class="btn btn-primary" href="https://apps.microsoft.com/store/detail/9MWLXVH2ZC7Q?cid=DevShareMWAPCS" target="_blank" rel="noopener"><span class="ico">🛍️</span> <span data-i18n="dl1-btn">Buka Microsoft Store</span></a>
+        <div class="dl-badges">
+          <a href="https://apps.microsoft.com/store/detail/9MWLXVH2ZC7Q?cid=DevShareMWAPCS" target="_blank" rel="noopener"><img src="img/ms-badge-light.svg" alt="Get it from Microsoft" width="161" height="44" loading="lazy"></a>
+          <img class="esrb" src="img/esrb-everyone.svg" alt="ESRB Rating: Everyone" width="36" height="50" loading="lazy">
+        </div>
       </div>
       <div class="dl-card reveal">
         <span class="badge b-ready">SIAP · Windows 10/11</span>
@@ -816,7 +840,7 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
           </a>
           <a href="https://github.com/PustakaHadith/PustakaHadith/tree/main/dokumen" target="_blank" rel="noopener"><span data-i18n="foot-docs">Dokumentasi</span></a>
           <a href="#kemas-kini"><span data-i18n="foot-update">Kemas Kini</span></a>
-          <a href="https://github.com/PustakaHadith/PustakaHadith/blob/main/LICENSE" target="_blank" rel="noopener"><span data-i18n="foot-license">Lesen Data</span></a>
+          <a href="#" id="licLink"><span data-i18n="foot-license">Lesen Data</span></a>
           <span class="foot-plain" data-i18n="foot-bio">Biodata Penerbit</span>
         </div>
       </div>
@@ -824,6 +848,22 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
     <div class="copyright" data-i18n="foot-copy">© 2026 PustakaHadith · Aplikasi desktop percuma yang berjalan sepenuhnya tanpa internet · Data hadis daripada hadis.my, terjemahan Inggeris &amp; darjat daripada koleksi domain awam · Huraian ringkas daripada sumber berautoriti dengan atribusi · Untuk kebenaran pengedaran komersial, hubungi <b>info2@pustakahadith.my</b></div>
   </div>
 </footer>
+
+<!-- modal Lesen Data -->
+<div class="lic-modal" id="licModal" aria-hidden="true">
+  <div class="lic-card" role="dialog" aria-modal="true" aria-labelledby="licTitle">
+    <button class="lic-x" id="licClose" aria-label="Tutup">✕</button>
+    <div class="kicker" data-i18n="lic-kicker">Lesen</div>
+    <h3 id="licTitle" data-i18n="lic-title">Lesen Data &amp; Perisian</h3>
+    <div class="lic-rows">
+      <div class="lic-row"><b data-i18n="lic1-k">Perisian</b><span data-i18n="lic1-v">Kod sumber PustakaHadith berlesen <b>MIT</b> — guna, ubah, dan edar bebas dengan atribusi.</span></div>
+      <div class="lic-row"><b data-i18n="lic2-k">Teks Hadis</b><span data-i18n="lic2-v">62,169 petikan Arab daripada <b>hadis.my</b> (9 kitab Kutub al‑Tis'ah) untuk tujuan ilmu dan rujukan.</span></div>
+      <div class="lic-row"><b data-i18n="lic3-k">Terjemahan &amp; Darjat</b><span data-i18n="lic3-v">Terjemahan Inggeris dan klasifikasi darjat ulama daripada <b>koleksi domain awam</b>, dipaparkan sebagaimana adanya.</span></div>
+      <div class="lic-row"><b data-i18n="lic4-k">Huraian Ringkas</b><span data-i18n="lic4-v">Diambil daripada sumber berautoriti dengan <b>atribusi</b> — bukan gantian kepada rujukan asal.</span></div>
+    </div>
+    <p class="lic-note" data-i18n="lic-note">Untuk kebenaran pengedaran komersial, hubungi <b>info2@pustakahadith.my</b>. Gambar tangkap layar dan ikon laman adalah milik PustakaHadith.</p>
+  </div>
+</div>
 
 <script>
 // ---------- dwibahasa MS/EN ----------
@@ -993,6 +1033,17 @@ const TRANS={
 "foot-update":{"ms":"Kemas Kini","en":"Updates"},
 "foot-license":{"ms":"Lesen Data","en":"Data License"},
 "foot-bio":{"ms":"Biodata Penerbit","en":"Publisher Profile"},
+"lic-kicker":{"ms":"Lesen","en":"License"},
+"lic-title":{"ms":"Lesen Data &amp; Perisian","en":"Data &amp; Software License"},
+"lic1-k":{"ms":"Perisian","en":"Software"},
+"lic1-v":{"ms":"Kod sumber PustakaHadith berlesen <b>MIT</b> — guna, ubah, dan edar bebas dengan atribusi.","en":"PustakaHadith source code is <b>MIT</b> licensed — use, modify and distribute freely with attribution."},
+"lic2-k":{"ms":"Teks Hadis","en":"Hadith Texts"},
+"lic2-v":{"ms":"62,169 petikan Arab daripada <b>hadis.my</b> (9 kitab Kutub al‑Tis'ah) untuk tujuan ilmu dan rujukan.","en":"62,169 Arabic quotations from <b>hadis.my</b> (9 Kutub al-Tis'ah books) for study and reference."},
+"lic3-k":{"ms":"Terjemahan &amp; Darjat","en":"Translations &amp; Grading"},
+"lic3-v":{"ms":"Terjemahan Inggeris dan klasifikasi darjat ulama daripada <b>koleksi domain awam</b>, dipaparkan sebagaimana adanya.","en":"English translations and scholar grading from <b>public domain collections</b>, displayed as-is."},
+"lic4-k":{"ms":"Huraian Ringkas","en":"Brief Commentaries"},
+"lic4-v":{"ms":"Diambil daripada sumber berautoriti dengan <b>atribusi</b> — bukan gantian kepada rujukan asal.","en":"Taken from authoritative sources with <b>attribution</b> — not a substitute for the original references."},
+"lic-note":{"ms":"Untuk kebenaran pengedaran komersial, hubungi <b>info2@pustakahadith.my</b>. Gambar tangkap layar dan ikon laman adalah milik PustakaHadith.","en":"For commercial distribution permission, contact <b>info2@pustakahadith.my</b>. Screenshots and site icons are owned by PustakaHadith."},
 "foot-copy":{"ms":"© 2026 PustakaHadith · Aplikasi desktop percuma yang berjalan sepenuhnya tanpa internet · Data hadis daripada hadis.my, terjemahan Inggeris &amp; darjat daripada koleksi domain awam · Huraian ringkas daripada sumber berautoriti dengan atribusi · Untuk kebenaran pengedaran komersial, hubungi <b>info2@pustakahadith.my</b>","en":"© 2026 PustakaHadith · Free desktop app that runs entirely offline · Hadith data from hadis.my, English translation &amp; grading from public domain collections · Brief commentary from authoritative sources with attribution · For commercial distribution permission, contact <b>info2@pustakahadith.my</b>"}
 };
 
@@ -1046,6 +1097,14 @@ document.querySelectorAll('.faq-q').forEach(b=>b.addEventListener('click',()=>{
   document.querySelectorAll('.faq-item').forEach(x=>{x.classList.remove('open'); x.querySelector('.faq-q').setAttribute('aria-expanded','false')});
   if(!wasOpen){item.classList.add('open'); b.setAttribute('aria-expanded','true')}
 }));
+// ---------- Modal Lesen Data ----------
+const licModal=document.getElementById('licModal');
+function licBuka(){licModal.classList.add('open'); licModal.setAttribute('aria-hidden','false'); document.getElementById('licClose').focus()}
+function licTutup(){licModal.classList.remove('open'); licModal.setAttribute('aria-hidden','true')}
+document.getElementById('licLink').addEventListener('click',e=>{e.preventDefault(); licBuka()});
+document.getElementById('licClose').addEventListener('click',licTutup);
+licModal.addEventListener('click',e=>{if(e.target===licModal) licTutup()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&licModal.classList.contains('open')) licTutup()});
 // ---------- Tab tangkap layar ----------
 const btns=document.querySelectorAll('.tab'), shots=document.querySelectorAll('.shot');
 btns.forEach(b=>b.addEventListener('click',()=>{
