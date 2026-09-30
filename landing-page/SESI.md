@@ -115,6 +115,24 @@ Semua kerja **landing page sahaja**. 4 commit, semua sudah push (`bd4ce70..d6169
 - [x] 3 `href="#"` tinggal — sengaja (logo brand ×2, nav "Utama" → ke atas)
 
 ### Pending
-- [ ] Nav link ke 3 section baharu (tunggu arahan)
-- [ ] Biodata Penerbit — kandungan/isi (baru teks sahaja)
-- [ ] Verifikasi live selepas deploy Cloudflare (favicon + badge SVG + modal)
+- [x] Nav link ke 3 section baharu — pengguna: **"sudah selesai"** (30 Sep). Nota semakan: nav live masih tanpa `href="#mula"`/`"#soalan"` (keputusan ditutup tanpa tambahan link)
+- [ ] Biodata Penerbit — kandungan/isi (baru teks sahaja) — **tunggu input pengguna**
+- [x] Verifikasi live selepas deploy Cloudflare — **SEMAKAN AUTOMATIK LULUS (30 Sep)**, lihat entri Sesi 36
+
+---
+
+## Sesi 36 (30 September 2026) — Semakan Live Automatik
+
+Semua diperiksa secara automatik dari `https://pustakahadith.my` (tiada perubahan fail):
+
+### Lulus ✅
+- **HTTP 200**, 88,237 B, UTF-8 sah
+- **3 section baharu wujud**: `#mula`, `#soalan`, `#kemas-kini`
+- **Sinkron dgn repo**: kandungan live == `HEAD:landing-page/index.html` — satu-satunya beza ialah **obfuscasi emel Cloudflare** (`/cdn-cgi/l/email-protection`, 4 lokasi) + beacon Cloudflare Insights (injeksi pelayan, normal)
+- **Aset semua 200**: `favicon.ico` (14.7 KB) · `apple-touch-icon.png` (10.9 KB) · `img/ms-badge-light.svg` (26.4 KB) · `img/esrb-everyone.svg` (7.0 KB) · `img/bg-globe.webp` (75.1 KB) · `img/logo.png` (34.2 KB) · `manifest.json`
+- **Modal Lesen Data** (`licLink` + `lic-*`) ADA · `scroll-padding-top` ADA · latar `bg-globe` ADA
+- **i18n**: 173 `data-i18n` unik — **0 hilang** dalam objek TRANS
+
+### Perhatian ⚠️
+- **Nav tiada pautan** ke `#mula`/`#soalan` (nav live & tempatan sama) — pengguna kata item ini "sudah selesai"; kemungkinan ditutup tanpa tambahan link
+- Semakan visual penuh (render sebenar) tetap perlu pelayar — bahagian ini hanya kandungan/aset/HTTP
