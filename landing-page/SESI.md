@@ -137,30 +137,30 @@ Semua diperiksa secara automatik dari `https://pustakahadith.my` (tiada perubaha
 - **Nav tiada pautan** ke `#mula`/`#soalan` (nav live & tempatan sama) â€” pengguna kata item ini "sudah selesai"; kemungkinan ditutup tanpa tambahan link
 - Semakan visual penuh (render sebenar) tetap perlu pelayar â€” bahagian ini hanya kandungan/aset/HTTP
 
-## Sesi 37 (30 September 2026) — Changelog landing ? v1.0.3
+## Sesi 37 (30 September 2026) â€” Changelog landing â†’ v1.0.3
 
-**FINAL ?** — commit `92768bb` (`index.html`, +19/-19) ? push `8b4e7cc..92768bb`
-? Cloudflare auto-deploy ? disemak live (10/10 lulus).
+**FINAL âœ…** â€” commit `92768bb` (`index.html`, +19/âˆ’19) â†’ push `8b4e7cc..92768bb`
+â†’ Cloudflare auto-deploy â†’ disemak live (10/10 lulus).
 
 ### Perubahan
-- `#kemas-kini`: tajuk ? **"Yang Baharu dalam v1.0.3"**; kad baharu **v1.0.3 · 30 September 2026 · LIVE**
-  4 item: (1) saiz tetingkap 1280×720 + maximize 85% · (2) carian kemas — kolum putih + hero baharu
-  · (3) kongsi "Info penuh" papar pustakahadith.my · (4) Makluman permulaan ON/OFF + tarikh Hijri
-- `cl-more` ? "Keluaran lepas: **v1.0.2 (22 Sep)** · v1.0.1 (12 Sep) · v1.0.0 (2 Sep)" (kad v1.0.2 turun ke senarai lepas)
-- i18n **ms + en** dikemas kini: `cl-title`, `cl-date`, `cl1`–`cl4`, `cl-more`, `dl-note`
-- Butang Setup & 7z ? `releases/download/**v1.0.3**/...` (aset Release v1.0.3 sudah live)
-- `dl-note` ? **Versi 1.0.3**
-- **Kad Store (`dl1-p`) KEKAL v1.0.2** — Store masih serve v1.0.2; tukar hanya selepas upload
+- `#kemas-kini`: tajuk â†’ **"Yang Baharu dalam v1.0.3"**; kad baharu **v1.0.3 Â· 30 September 2026 Â· LIVE**
+  4 item: (1) saiz tetingkap 1280Ã—720 + maximize 85% Â· (2) carian kemas â€” kolum putih + hero baharu
+  Â· (3) kongsi "Info penuh" papar pustakahadith.my Â· (4) Makluman permulaan ON/OFF + tarikh Hijri
+- `cl-more` â†’ "Keluaran lepas: **v1.0.2 (22 Sep)** Â· v1.0.1 (12 Sep) Â· v1.0.0 (2 Sep)" (kad v1.0.2 turun ke senarai lepas)
+- i18n **ms + en** dikemas kini: `cl-title`, `cl-date`, `cl1`â€“`cl4`, `cl-more`, `dl-note`
+- Butang Setup & 7z â†’ `releases/download/**v1.0.3**/...` (aset Release v1.0.3 sudah live)
+- `dl-note` â†’ **Versi 1.0.3**
+- **Kad Store (`dl1-p`) KEKAL v1.0.2** â€” Store masih serve v1.0.2; tukar hanya selepas upload
   MSIX 1.0.3.0 ke Partner Center (tiada claim palsu)
 
 ### Semakan automatik (live pustakahadith.my)
-- HTTP 200 · tajuk/vnum/tarikh v1.0.3 ADA · kedua-dua butang ? URL v1.0.3 ADA ·
-  `dl-note` 1.0.3 ADA · TRANS `cl-title`/`cl-more` ms ADA · kad Store v1.0.2 kekal ADA ·
+- HTTP 200 Â· tajuk/vnum/tarikh v1.0.3 ADA Â· kedua-dua butang â†’ URL v1.0.3 ADA Â·
+  `dl-note` 1.0.3 ADA Â· TRANS `cl-title`/`cl-more` ms ADA Â· kad Store v1.0.2 kekal ADA Â·
   item changelog lama hilang
-- Sintaks: script JS utama `node --check` OK (script1 = JSON-LD, bukan JS) · 173 `data-i18n` — 0 hilang
+- Sintaks: script JS utama `node --check` OK (script1 = JSON-LD, bukan JS) Â· 173 `data-i18n` â€” 0 hilang
 - Sisa `v1.0.2` dlm fail = **dikehendaki** (cl-more + kad Store sahaja)
 
 ### Pending
-- Cadangan link nav ? `#mula`/`#soalan` (pengguna kata sudah selesai; link tiada — tunggu keputusan)
-- Biodata Penerbit — tunggu input teks
-- Kad Store ? v1.0.3 selepas muat naik MSIX di Partner Center
+- Cadangan link nav â†’ `#mula`/`#soalan` (pengguna kata sudah selesai; link tiada â€” tunggu keputusan)
+- Biodata Penerbit â€” tunggu input teks
+- Kad Store â†’ v1.0.3 selepas muat naik MSIX di Partner Center
