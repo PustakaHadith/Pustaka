@@ -12,7 +12,7 @@
 | Output MSIX siap (semua versi) | `PustakaQH_dist\msix\` — lihat `msix\NOTA.md` |
 | Staging build MSIX | `PustakaQH_dist\msix_staging\` (dibina semula setiap build) |
 | Build aplikasi (untuk disalin ke staging) | `PustakaQH_dist\PustakaHadith\` |
-| Aset Store (screenshot, privasi, penerangan) | `PustakaQH_dist\` root (screenshot_*.png, privacy_policy.html, PANDUAN_*) |
+| Aset Store (screenshot, privasi) | `PustakaQH_dist\` root (screenshot_*.png, privacy_policy.html) |
 | Pakej Store rasmi & sejarah | `PustakaQH_dist\msix\` |
 
 ## Pembinaan
@@ -33,8 +33,10 @@ Jangan ubah laluan ini tanpa arahan pengguna.
 
 **Dikekalkan (wajib / bukan lapuk):**
 - `msix\` (5 versi msix + NOTA) · `msix_staging\` · `PustakaHadith\` (build 29 Sep)
-- `PustakaHadith.pfx` (sijil) · semua aset Store (screenshot_*, privacy_*, PANDUAN_*)
+- `PustakaHadith.pfx` (sijil) · semua aset Store (screenshot_*, privacy_*)
 - `PustakaHadith-v1.0.0.zip` (683 MB) — **satu-satunya salinan**; Release GitHub
   `v1.0.0` tiada aset. Hanya buang dengan arahan eksplisit.
+- `PANDUAN_KEMAS_KINI_STORE_v1.0.1.md` — **dibuang (30 Sep, arahan: tak perlu
+  memandangkan v1.0.3 sudah terbit)**; masih boleh dipulihkan dari git (`d10bc51`).
 
 Kandungan selepas pembersihan: ~8.9 GB (bebas ~6.0 GB).
