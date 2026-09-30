@@ -1,5 +1,8 @@
 # NOTA — Folder MSIX rasmi
 
+> **WAJIB:** semua pembikinan file distribution Microsoft Store mesti
+> dalam folder `PustakaQH_dist\` — lihat `..\NOTA.md` (folder induk).
+
 **Semua pakej MSIX PustakaHadith mesti disimpan di sini** (folder khas).
 
 - Lokasi: `D:\Pustaka Quran Hadis\Pustaka\PustakaQH_dist\msix\`
