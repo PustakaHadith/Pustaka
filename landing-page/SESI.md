@@ -136,3 +136,31 @@ Semua diperiksa secara automatik dari `https://pustakahadith.my` (tiada perubaha
 ### Perhatian ‚ö†Ô∏è
 - **Nav tiada pautan** ke `#mula`/`#soalan` (nav live & tempatan sama) ‚Äî pengguna kata item ini "sudah selesai"; kemungkinan ditutup tanpa tambahan link
 - Semakan visual penuh (render sebenar) tetap perlu pelayar ‚Äî bahagian ini hanya kandungan/aset/HTTP
+
+## Sesi 37 (30 September 2026) ó Changelog landing ? v1.0.3
+
+**FINAL ?** ó commit `92768bb` (`index.html`, +19/-19) ? push `8b4e7cc..92768bb`
+? Cloudflare auto-deploy ? disemak live (10/10 lulus).
+
+### Perubahan
+- `#kemas-kini`: tajuk ? **"Yang Baharu dalam v1.0.3"**; kad baharu **v1.0.3 ∑ 30 September 2026 ∑ LIVE**
+  4 item: (1) saiz tetingkap 1280◊720 + maximize 85% ∑ (2) carian kemas ó kolum putih + hero baharu
+  ∑ (3) kongsi "Info penuh" papar pustakahadith.my ∑ (4) Makluman permulaan ON/OFF + tarikh Hijri
+- `cl-more` ? "Keluaran lepas: **v1.0.2 (22 Sep)** ∑ v1.0.1 (12 Sep) ∑ v1.0.0 (2 Sep)" (kad v1.0.2 turun ke senarai lepas)
+- i18n **ms + en** dikemas kini: `cl-title`, `cl-date`, `cl1`ñ`cl4`, `cl-more`, `dl-note`
+- Butang Setup & 7z ? `releases/download/**v1.0.3**/...` (aset Release v1.0.3 sudah live)
+- `dl-note` ? **Versi 1.0.3**
+- **Kad Store (`dl1-p`) KEKAL v1.0.2** ó Store masih serve v1.0.2; tukar hanya selepas upload
+  MSIX 1.0.3.0 ke Partner Center (tiada claim palsu)
+
+### Semakan automatik (live pustakahadith.my)
+- HTTP 200 ∑ tajuk/vnum/tarikh v1.0.3 ADA ∑ kedua-dua butang ? URL v1.0.3 ADA ∑
+  `dl-note` 1.0.3 ADA ∑ TRANS `cl-title`/`cl-more` ms ADA ∑ kad Store v1.0.2 kekal ADA ∑
+  item changelog lama hilang
+- Sintaks: script JS utama `node --check` OK (script1 = JSON-LD, bukan JS) ∑ 173 `data-i18n` ó 0 hilang
+- Sisa `v1.0.2` dlm fail = **dikehendaki** (cl-more + kad Store sahaja)
+
+### Pending
+- Cadangan link nav ? `#mula`/`#soalan` (pengguna kata sudah selesai; link tiada ó tunggu keputusan)
+- Biodata Penerbit ó tunggu input teks
+- Kad Store ? v1.0.3 selepas muat naik MSIX di Partner Center
