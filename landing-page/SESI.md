@@ -164,3 +164,18 @@ Semua diperiksa secara automatik dari `https://pustakahadith.my` (tiada perubaha
 - Cadangan link nav → `#mula`/`#soalan` (pengguna kata sudah selesai; link tiada — tunggu keputusan)
 - Biodata Penerbit — tunggu input teks
 - Kad Store → v1.0.3 selepas muat naik MSIX di Partner Center
+
+## Sesi 38 (30 September 2026) — Store v1.0.3 Live + kad Store landing
+
+**FINAL ✅** — pengesahan pengguna: **MSIX 1.0.3.0 dah publish di Microsoft Store**
+(halaman Store JS-rendered, versi takdisenaraikan server-side; terima pengesahan).
+
+- Sebelum publish: MSIX v1.0.3 **diuji pasang+lancar LULUS** (1.0.3.0, exe identik
+  SHA256 dgn build 29 Sep) + pembersihan pakej/sijil selepas ujian
+- Identiti disahkan sepadan dgn pakej Store v1.0.2 (Name/Publisher/DisplayName;
+  versi 1.0.3.0 > 1.0.2.0)
+- Landing: kad Store `dl1-p` (ms+en) → **"v1.0.3 disahkan & live"** — commit
+  `23b65b1` → push `190869e..23b65b1` → Cloudflare auto-deploy
+- Semak live: HTTP 200, `dl1-p` HTML + TRANS = v1.0.3 ADA; sisa v1.0.2 hanya dlm
+  baris "Keluaran lepas" (dikehendaki)
+- Script JS: `node --check` OK
