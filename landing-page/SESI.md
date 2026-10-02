@@ -185,3 +185,9 @@ Semua diperiksa secara automatik dari `https://pustakahadith.my` (tiada perubaha
 - Teks ms+en dikemas kini: dl3-h/dl3-p/dl3-btn, faq5-q/faq5-a, start1-p (HTML + i18n JSON) - sisa rujukan "7z": 0
 - Ikon landing (img/logo.png, favicon.ico, apple-touch-icon.png, logo.jpg) -> video-promo/thumbnail/icon.png (commit ab8eeb1)
 - Fakta semakan: EXE sudah v1.0.3; landing langsung tiada pautan .zip dalam sejarah git
+
+## Sesi 38c - 2 Okt 2026 (versi pada kad EXE + ZIP)
+- Tajuk kad dikemas kini (HTML + i18n ms/en): dl2-h "Setup EXE" -> "Setup EXE - v1.0.3"
+  dan dl3-h "Portable ZIP" -> "Portable ZIP - v1.0.3" (tanda tengah guna "·")
+- NOTA utk kemas kini akan datang: dl2-h/dl3-h kena ikut versi release baharu
+- FFFD: 0 (disemak selepas edit)
