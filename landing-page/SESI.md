@@ -191,3 +191,7 @@ Semua diperiksa secara automatik dari `https://pustakahadith.my` (tiada perubaha
   dan dl3-h "Portable ZIP" -> "Portable ZIP - v1.0.3" (tanda tengah guna "·")
 - NOTA utk kemas kini akan datang: dl2-h/dl3-h kena ikut versi release baharu
 - FFFD: 0 (disemak selepas edit)
+
+## Sesi 38d - 2 Okt 2026 (ikon brand dibesarkan)
+- CSS .brand img: 38x38 (radius 9px) -> 46x46 (radius 11px) - logo nav + footer
+- Alasan: ikon baharu berbentuk segi empat (1123x1135) nampak lebih kecil pada saiz lama
