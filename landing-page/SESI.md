@@ -179,3 +179,9 @@ Semua diperiksa secara automatik dari `https://pustakahadith.my` (tiada perubaha
 - Semak live: HTTP 200, `dl1-p` HTML + TRANS = v1.0.3 ADA; sisa v1.0.2 hanya dlm
   baris "Keluaran lepas" (dikehendaki)
 - Script JS: `node --check` OK
+
+## Sesi 38b - 2 Okt 2026 (update halaman Muat Turun)
+- Kad portable: 7z -> ZIP - pautan baru releases/download/v1.0.3/PustakaHadith-portable-1.0.3-x64.zip (993.5 MB, SHA-256 4AD4B2D2...41D9CB)
+- Teks ms+en dikemas kini: dl3-h/dl3-p/dl3-btn, faq5-q/faq5-a, start1-p (HTML + i18n JSON) - sisa rujukan "7z": 0
+- Ikon landing (img/logo.png, favicon.ico, apple-touch-icon.png, logo.jpg) -> video-promo/thumbnail/icon.png (commit ab8eeb1)
+- Fakta semakan: EXE sudah v1.0.3; landing langsung tiada pautan .zip dalam sejarah git
