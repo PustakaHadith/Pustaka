@@ -3,7 +3,7 @@
 <img src="img/penerbit.jpg" alt="Muhamad Khairullah Abd Wahab" width="300">
 
 **Muhamad Khairullah Abd Wahab**
-PUSTAHA HADITH · Selangor, Malaysia
+PUSTAKA HADITH · Selangor, Malaysia
 <https://www.pustakahadith.my> ·
 <muhd.khairullah@pustakahadith.my
 
@@ -13,7 +13,7 @@ PUSTAHA HADITH · Selangor, Malaysia
 
 ## Ringkasan
 
-Lahir di Singapura pada 1969, membesar dan belajar di Malaysia. Lebih **37 tahun** berpengalaman dan berkecimpung dalam dalam kejuruteraan, teknologi dan pengurusan projek :
+Lahir di Singapura pada 1969, membesar dan belajar di Malaysia. Lebih **37 tahun** berpengalaman dan berkecimpung dalam kejuruteraan, teknologi dan pengurusan projek :
 bermula sebagai jurutera kejuruteraan pengeluaran di **Canon Opto Malaysia**(1989), jurutera pembangunan RnD **Reverse Sensor** syarikat pembekal **Proton**, menjadi pakar **SCADA dan instrumen** bagi loji rawatan air, pernah memimpin beberapa syarikat sebagai Pengarah Urusan dan Pengarah Kumpulan, **COO** sebuah syarikat perisian (2013). Pernah terlibat dengan Syarikat Perisian Keselamatan 'Antivirus' **1 Machine** yang mengeluarkan perisian 'Antivirus' Malaysia Pertama **PERISAI**.
 
 Setelah mengharungi jatuh bangun dalam hidup kini menghabiskan masa di atas katil pesakit setelah dikurniakan ujian. Ketika banyak mencari dan membaca teks Hadis maka timbullah idea untuk menerbit secara **Percuma** — **PustakaHadith**: perpustakaan digital **62,169 hadis** daripada
