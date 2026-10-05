@@ -408,6 +408,15 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
 .cl-more{text-align:center; margin-top:16px; color:var(--faint); font-size:.8rem}
 
 /* ---------- responsive ---------- */
+/* Nav penuh (7 pautan + CTA + ikon) muat pada lebar wrap maksimum 1160px
+   sahaja -- daripada bawah ~1180px ia melimpah keluar dari .nav-inner.
+   Tutup kepada burger pada 1180px (media query LAIN daripada blok 980px
+   supaya susun atur grid tidak ikut berubah). */
+@media(max-width:1180px){
+  .nav-links{display:none; position:absolute; top:66px; left:0; right:0; background:rgba(8,17,26,.97); border-bottom:1px solid var(--bord); flex-direction:column; align-items:flex-start; padding:16px 20px 22px; gap:18px}
+  .nav-links.open{display:flex}
+  .burger{display:block; z-index:20}
+}
 @media(max-width:980px){
   .hero-grid{grid-template-columns:1fr; gap:44px}
   .float-chip{display:none}
@@ -445,9 +454,11 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
     </a>
     <div class="nav-links">
       <a href="#"><span data-i18n="nav-home">Utama</span></a>
+      <a href="#mula"><span data-i18n="nav-start">Mula Pantas</span></a>
       <a href="#tampil"><span data-i18n="nav-shots">Tangkap Layar</span></a>
       <a href="#ciri"><span data-i18n="nav-features">Ciri Utama</span></a>
       <a href="#kitab"><span data-i18n="nav-books">9 Kitab</span></a>
+      <a href="#soalan"><span data-i18n="nav-faq">Soalan Lazim</span></a>
       <a href="#hubungi"><span data-i18n="nav-contact">Hubungi</span></a>
       <a class="nav-cta" href="#muat-turun"><span data-i18n="nav-download">Muat Turun</span></a>
       <a class="gh-icon" href="https://github.com/PustakaHadith/PustakaHadith" target="_blank" rel="noopener" title="PustakaHadith di GitHub" aria-label="PustakaHadith di GitHub">
@@ -872,6 +883,8 @@ const TRANS={
 "nav-shots":{"ms":"Tangkap Layar","en":"Screenshots"},
 "nav-features":{"ms":"Ciri Utama","en":"Features"},
 "nav-books":{"ms":"9 Kitab","en":"9 Books"},
+"nav-start":{"ms":"Mula Pantas","en":"Quick Start"},
+"nav-faq":{"ms":"Soalan Lazim","en":"FAQ"},
 "nav-contact":{"ms":"Hubungi","en":"Contact"},
 "nav-download":{"ms":"Muat Turun","en":"Download"},
 "hero-eyebrow":{"ms":"Aplikasi Desktop Carian Hadis — Percuma &amp; Luar Talian","en":"Hadith Search Desktop App — Free &amp; Offline"},
