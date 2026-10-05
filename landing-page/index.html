@@ -81,17 +81,22 @@ nav{
 .brand img{width:46px; height:46px; border-radius:11px}
 .brand .b-p{font-size:21px; font-weight:800; color:var(--teal); letter-spacing:0}
 .brand .b-h{font-size:21px; font-weight:300; color:var(--tealL)}
-.nav-links{display:flex; align-items:center; gap:26px}
-.nav-links a{color:var(--sec); font-size:.92rem; font-weight:500; position:relative}
+/* Nav: ruang dalam .wrap ialah 1160-56 = 1104px. Nav penuh (7 pautan +
+   CTA + ikon GitHub) diukur ~1224px -> melimpah dan bertindih. Jimat:
+   gap 26->16, fon .92->.88rem, CTA padding 20->16, dan "Utama" dibuang
+   (logo jenama sudah memaut ke #). white-space:nowrap halang pautan
+   bertukar dua baris. */
+.nav-links{display:flex; align-items:center; gap:16px}
+.nav-links a{color:var(--sec); font-size:.88rem; font-weight:500; position:relative; white-space:nowrap}
 .nav-links a::after{content:''; position:absolute; left:0; bottom:-6px; width:0; height:2px; background:var(--teal); transition:width .25s}
 .nav-links a:hover::after{width:100%}
 .nav-links a:hover{color:var(--ttl)}
-.nav-cta{background:var(--teal); color:#06251F; font-weight:700; padding:9px 20px; border-radius:999px; font-size:.9rem}
+.nav-cta{background:var(--teal); color:#06251F; font-weight:700; padding:8px 16px; border-radius:999px; font-size:.88rem}
 .nav-cta:hover{background:var(--tealL); color:#06251F}
 .gh-icon{display:inline-flex; align-items:center; justify-content:center; width:38px; height:38px; border-radius:50%; color:var(--sec); border:1px solid var(--bord); transition:all .2s}
 .gh-icon:hover{color:var(--ttl); border-color:var(--teal); background:var(--card2); transform:translateY(-2px)}
 .burger{display:none; background:none; border:none; color:var(--ttl); font-size:1.6rem; cursor:pointer}
-.lang-switch{display:flex; align-items:center; gap:2px; margin:0 6px 0 10px}
+.lang-switch{display:flex; align-items:center; gap:2px; margin:0 0 0 4px}
 .lang-btn{background:none; border:none; color:var(--faint); font-weight:700; font-size:.8rem; cursor:pointer; padding:5px 9px; border-radius:8px; transition:all .2s; letter-spacing:.3px}
 .lang-btn:hover{color:var(--ttl)}
 .lang-btn.active{color:var(--teal); background:var(--tealP); border:1px solid var(--glass-bd)}
@@ -295,10 +300,22 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
 .lic-row{background:var(--card2); border:1px solid var(--bord); border-radius:var(--radius-sm); padding:10px 14px}
 .lic-row b{display:block; font-size:.8rem; color:var(--tealL); margin-bottom:2px}
 .lic-row span{font-size:.86rem; color:var(--sec); line-height:1.55}
+.lic-row.bio-row span{font-size:.88rem; line-height:1.65}
+.lic-row.bio-row span b{display:inline; font-size:inherit; font-weight:700; color:var(--ttl); margin-bottom:0}
 .lic-note{margin-top:14px; font-size:.8rem; color:var(--faint); line-height:1.6}
 .lic-note a{color:var(--tealL)}
 .lic-x{position:absolute; top:12px; right:14px; width:32px; height:32px; border:0; border-radius:8px; background:transparent; color:var(--muted); font-size:1.3rem; cursor:pointer; transition:background .2s, color .2s}
 .lic-x:hover{background:var(--card2); color:var(--ttl)}
+/* modal Biodata Penerbit — kad & tetingkap guna gaya yang SAMA seperti
+   pop-up Lesen Data (lic-modal / lic-card / lic-x) di atas. */
+.bio-top{display:flex; gap:16px; align-items:flex-start; margin-bottom:16px}
+.bio-foto{width:132px; height:176px; object-fit:cover; object-position:50% 22%; border-radius:14px; border:1px solid var(--bordL); flex:none}
+.bio-id b{display:block; font-size:1.02rem; color:var(--ttl); line-height:1.3; margin-bottom:4px}
+.bio-id span{display:block; font-size:.85rem; color:var(--sec); line-height:1.55}
+.bio-id .bio-links{margin-top:6px; font-size:.82rem}
+.bio-id .bio-links a{color:var(--tealL)}
+.bio-quote{margin:10px 0 0; font-size:.86rem; font-style:italic; color:var(--muted); line-height:1.6}
+@media(max-width:520px){.bio-top{flex-direction:column; align-items:center; text-align:center}}
 
 /* ---------- reveal on scroll ---------- */
 .reveal{opacity:0; transform:translateY(32px) scale(.97); transition:opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1)}
@@ -453,7 +470,6 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
       <span><span class="b-p">Pustaka</span><span class="b-h">Hadith</span></span>
     </a>
     <div class="nav-links">
-      <a href="#"><span data-i18n="nav-home">Utama</span></a>
       <a href="#mula"><span data-i18n="nav-start">Mula Pantas</span></a>
       <a href="#tampil"><span data-i18n="nav-shots">Tangkap Layar</span></a>
       <a href="#ciri"><span data-i18n="nav-features">Ciri Utama</span></a>
@@ -852,7 +868,7 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
           <a href="https://github.com/PustakaHadith/PustakaHadith/tree/main/dokumen" target="_blank" rel="noopener"><span data-i18n="foot-docs">Dokumentasi</span></a>
           <a href="#kemas-kini"><span data-i18n="foot-update">Kemas Kini</span></a>
           <a href="#" id="licLink"><span data-i18n="foot-license">Lesen Data</span></a>
-          <span class="foot-plain" data-i18n="foot-bio">Biodata Penerbit</span>
+          <a href="#" id="bioLink"><span data-i18n="foot-bio">Biodata Penerbit</span></a>
         </div>
       </div>
     </div>
@@ -873,6 +889,29 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
       <div class="lic-row"><b data-i18n="lic4-k">Huraian Ringkas</b><span data-i18n="lic4-v">Diambil daripada sumber berautoriti dengan <b>atribusi</b> — bukan gantian kepada rujukan asal.</span></div>
     </div>
     <p class="lic-note" data-i18n="lic-note">Untuk kebenaran pengedaran komersial, hubungi <b>info2@pustakahadith.my</b>. Gambar tangkap layar dan ikon laman adalah milik PustakaHadith.</p>
+  </div>
+</div>
+
+<!-- modal Biodata Penerbit (gaya sama pop-up Lesen Data) -->
+<div class="lic-modal" id="bioModal" aria-hidden="true">
+  <div class="lic-card" role="dialog" aria-modal="true" aria-labelledby="bioTitle">
+    <button class="lic-x" id="bioClose" aria-label="Tutup">✕</button>
+    <div class="kicker" data-i18n="bio-kicker">Penerbit</div>
+    <h3 id="bioTitle" data-i18n="bio-title">Biodata Penerbit</h3>
+    <div class="bio-top">
+      <img class="bio-foto" src="img/penerbit.jpg" alt="Muhamad Khairullah Abd Wahab" width="132" height="176">
+      <div class="bio-id">
+        <b data-i18n="bio-name">Muhamad Khairullah Abd Wahab</b>
+        <span data-i18n="bio-role">COO, MyNiasoft Dot Com · Selangor, Malaysia</span>
+        <span class="bio-links"><a href="https://www.akula69.com" target="_blank" rel="noopener">akula69.com</a> · <a href="https://www.fimos.my" target="_blank" rel="noopener">fimos.my</a> · <a href="https://www.linkedin.com/in/muhamad-khairullah-abd-wahab-86117329" target="_blank" rel="noopener">LinkedIn</a></span>
+        <p class="bio-quote" data-i18n="bio-quote">“Percaya pada Allah, percaya pada diri sendiri, dan jangan berhenti.”</p>
+      </div>
+    </div>
+    <div class="lic-rows">
+      <div class="lic-row bio-row"><b data-i18n="bio1-k">Ringkasan</b><span data-i18n="bio1-v">Lebih <b>37 tahun</b> dalam kejuruteraan, teknologi dan pengurusan projek — bermula sebagai jurutera kejuruteraan pengeluaran di <b>Canon Opto Malaysia</b> (1989), pakar SCADA dan instrumen loji rawatan air, Pengarah Urusan beberapa syarikat, dan kini COO sebuah syarikat perisian sejak 2013. Kini — <b>PustakaHadith</b>: perpustakaan digital 62,169 hadis daripada 9 kitab, teks Arab penuh, terjemahan 4 bahasa dan carian makna AI, semuanya berjalan tanpa internet.</span></div>
+      <div class="lic-row bio-row"><b data-i18n="bio2-k">Sejarah Pembikinan PustakaHadith</b><span data-i18n="bio2-v">Bermula <b>30 Ogos 2026</b> dan sampai ke versi <b>1.0.3 di Microsoft Store</b> pada awal Oktober 2026 — kurang daripada enam minggu dari kod pertama kepada edaran awam. Dibina dengan Python + PyQt5 (antara muka Windows), SQLite + FTS5 (indeks teks) dan FAISS + e5-small (carian makna). Setiap edaran melalui <b>381 semakan automatik</b> supaya kualiti tidak diserahkan kepada nasib.</span></div>
+    </div>
+    <p class="lic-note" data-i18n="bio-note">Laman peribadi: <a href="https://www.akula69.com" target="_blank" rel="noopener">akula69.com</a> · Syarikat: <a href="https://www.fimos.my" target="_blank" rel="noopener">fimos.my</a></p>
   </div>
 </div>
 
@@ -1057,6 +1096,16 @@ const TRANS={
 "lic4-k":{"ms":"Huraian Ringkas","en":"Brief Commentaries"},
 "lic4-v":{"ms":"Diambil daripada sumber berautoriti dengan <b>atribusi</b> — bukan gantian kepada rujukan asal.","en":"Taken from authoritative sources with <b>attribution</b> — not a substitute for the original references."},
 "lic-note":{"ms":"Untuk kebenaran pengedaran komersial, hubungi <b>info2@pustakahadith.my</b>. Gambar tangkap layar dan ikon laman adalah milik PustakaHadith.","en":"For commercial distribution permission, contact <b>info2@pustakahadith.my</b>. Screenshots and site icons are owned by PustakaHadith."},
+"bio-kicker":{"ms":"Penerbit","en":"Publisher"},
+"bio-title":{"ms":"Biodata Penerbit","en":"Publisher Profile"},
+"bio-name":{"ms":"Muhamad Khairullah Abd Wahab","en":"Muhamad Khairullah Abd Wahab"},
+"bio-role":{"ms":"COO, MyNiasoft Dot Com · Selangor, Malaysia","en":"COO, MyNiasoft Dot Com · Selangor, Malaysia"},
+"bio-quote":{"ms":"“Percaya pada Allah, percaya pada diri sendiri, dan jangan berhenti.”","en":"“Believe in Allah, believe in yourself and never give up.”"},
+"bio1-k":{"ms":"Ringkasan","en":"Summary"},
+"bio1-v":{"ms":"Lebih <b>37 tahun</b> dalam kejuruteraan, teknologi dan pengurusan projek — bermula sebagai jurutera kejuruteraan pengeluaran di <b>Canon Opto Malaysia</b> (1989), pakar SCADA dan instrumen loji rawatan air, Pengarah Urusan beberapa syarikat, dan kini COO sebuah syarikat perisian sejak 2013. Kini — <b>PustakaHadith</b>: perpustakaan digital 62,169 hadis daripada 9 kitab, teks Arab penuh, terjemahan 4 bahasa dan carian makna AI, semuanya berjalan tanpa internet.","en":"Over <b>37 years</b> in engineering, technology and project management — starting as a production engineer at <b>Canon Opto Malaysia</b> (1989), a SCADA and instrumentation specialist for water treatment plants, Managing Director of several companies, and now COO of a software company since 2013. Today — <b>PustakaHadith</b>: a digital library of 62,169 hadiths from 9 books, full Arabic text, 4-language translations and AI meaning search, all running offline."},
+"bio2-k":{"ms":"Sejarah Pembikinan PustakaHadith","en":"How PustakaHadith Was Built"},
+"bio2-v":{"ms":"Bermula <b>30 Ogos 2026</b> dan sampai ke versi <b>1.0.3 di Microsoft Store</b> pada awal Oktober 2026 — kurang daripada enam minggu dari kod pertama kepada edaran awam. Dibina dengan Python + PyQt5 (antara muka Windows), SQLite + FTS5 (indeks teks) dan FAISS + e5-small (carian makna). Setiap edaran melalui <b>381 semakan automatik</b> supaya kualiti tidak diserahkan kepada nasib.","en":"Started on <b>30 August 2026</b> and reached <b>version 1.0.3 on the Microsoft Store</b> in early October 2026 — under six weeks from first code to public release. Built with Python + PyQt5 (Windows interface), SQLite + FTS5 (text index) and FAISS + e5-small (meaning search). Every release passes <b>381 automatic checks</b> so quality is never left to chance."},
+"bio-note":{"ms":"Laman peribadi: <a href=\"https://www.akula69.com\" target=\"_blank\" rel=\"noopener\">akula69.com</a> · Syarikat: <a href=\"https://www.fimos.my\" target=\"_blank\" rel=\"noopener\">fimos.my</a>","en":"Personal site: <a href=\"https://www.akula69.com\" target=\"_blank\" rel=\"noopener\">akula69.com</a> · Company: <a href=\"https://www.fimos.my\" target=\"_blank\" rel=\"noopener\">fimos.my</a>"},
 "foot-copy":{"ms":"© 2026 PustakaHadith · Aplikasi desktop percuma yang berjalan sepenuhnya tanpa internet · Data hadis daripada hadis.my, terjemahan Inggeris &amp; darjat daripada koleksi domain awam · Huraian ringkas daripada sumber berautoriti dengan atribusi · Untuk kebenaran pengedaran komersial, hubungi <b>info2@pustakahadith.my</b>","en":"© 2026 PustakaHadith · Free desktop app that runs entirely offline · Hadith data from hadis.my, English translation &amp; grading from public domain collections · Brief commentary from authoritative sources with attribution · For commercial distribution permission, contact <b>info2@pustakahadith.my</b>"}
 };
 
@@ -1118,6 +1167,14 @@ document.getElementById('licLink').addEventListener('click',e=>{e.preventDefault
 document.getElementById('licClose').addEventListener('click',licTutup);
 licModal.addEventListener('click',e=>{if(e.target===licModal) licTutup()});
 document.addEventListener('keydown',e=>{if(e.key==='Escape'&&licModal.classList.contains('open')) licTutup()});
+// ---------- Modal Biodata Penerbit (gaya sama Lesen Data) ----------
+const bioModal=document.getElementById('bioModal');
+function bioBuka(){bioModal.classList.add('open'); bioModal.setAttribute('aria-hidden','false'); document.getElementById('bioClose').focus()}
+function bioTutup(){bioModal.classList.remove('open'); bioModal.setAttribute('aria-hidden','true')}
+document.getElementById('bioLink').addEventListener('click',e=>{e.preventDefault(); bioBuka()});
+document.getElementById('bioClose').addEventListener('click',bioTutup);
+bioModal.addEventListener('click',e=>{if(e.target===bioModal) bioTutup()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'&&bioModal.classList.contains('open')) bioTutup()});
 // ---------- Tab tangkap layar ----------
 const btns=document.querySelectorAll('.tab'), shots=document.querySelectorAll('.shot');
 btns.forEach(b=>b.addEventListener('click',()=>{
