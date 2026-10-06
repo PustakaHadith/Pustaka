@@ -25,9 +25,10 @@ tanpa internet**.
 
 ## Sejarah Pembikinan PustakaHadith
 
-PustakaHadith bermula sebagai projek peribadi pada **30 Ogos 2026** dan
-sampai ke **versi 1.0.3 di Microsoft Store** pada awal **Oktober 2026** —
-kurang daripada enam minggu dari kod pertama kepada edaran awam.
+PustakaHadith lahir daripada penyelidikan peribadi yang dijalankan
+bertahun-tahun. Aplikasi desktop ini pula mula dibangunkan pada **Mei 2026**
+dan sampai ke **versi 1.0.3 di Microsoft Store** pada awal **Oktober 2026** —
+lebih kurang lima bulan dari kod pertama kepada edaran awam.
 
 Dibina dengan **Python + PyQt5** untuk antara muka desktop Windows, dengan
 data disimpan setempat dalam **SQLite + FTS5** (indeks teks penuh) dan

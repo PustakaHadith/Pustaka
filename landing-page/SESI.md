@@ -257,3 +257,21 @@ badge hero MS 1 baris)
   (jadual 6 baris) jadi lebih pendek dari susunan bertindan
 - Kesan: `scrollHeight` 1562 -> 1199; skrin **1400x900: scroll perlu 916 -> 407px (-55%)**
 - 820px (2 lajur mula) hingga 1400px disemak; pop-up Lesen `#licModal` kekal 520px/1 lajur
+
+## Sesi 39c - 5 Okt 2026 (pembetulan fakta: tarikh bermula)
+
+**FINAL ✅** — belum commit (gabung dengan perubahan lain, tunggu arahan push).
+
+- Salah fakta lama: "projek peribadi pada **30 Ogos 2026** / kurang daripada enam
+  minggu" — pengguna: penyelidikan dimulakan **bertahun-tahun lebih awal**,
+  aplikasi mula **Mei 2026** (bukan 30 Ogos)
+- Teks baharu dipasang di **4 tempat**: static `bio2-v` (MS), i18n `bio2-v` ms,
+  i18n `bio2-v` en, `BIODATA_PENERBIT.md` —
+  "lahir daripada penyelidikan peribadi yang dijalankan bertahun-tahun; aplikasi
+  desktop ini pula mula dibangunkan pada **Mei 2026** dan sampai ke versi 1.0.3
+  Microsoft Store pada awal **Oktober 2026** — lebih kurang lima bulan dari kod
+  pertama kepada edaran awam" (EN: years of personal research / May 2026 /
+  October 2026 / about five months)
+- Disahkan via DOM dump MS & EN: `30 Ogos 2026`/`30 August 2026` = 0 hit,
+  `enam minggu`/`six weeks` = 0 hit; `Mei/May 2026`, `bertahun-tahun`/`years of
+  personal research`, `lima bulan`/`five months` semuanya hadir
