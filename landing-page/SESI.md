@@ -188,10 +188,72 @@ Semua diperiksa secara automatik dari `https://pustakahadith.my` (tiada perubaha
 
 ## Sesi 38c - 2 Okt 2026 (versi pada kad EXE + ZIP)
 - Tajuk kad dikemas kini (HTML + i18n ms/en): dl2-h "Setup EXE" -> "Setup EXE - v1.0.3"
-  dan dl3-h "Portable ZIP" -> "Portable ZIP - v1.0.3" (tanda tengah guna "�")
+  dan dl3-h "Portable ZIP" -> "Portable ZIP - v1.0.3" (tanda tengah guna "�")
 - NOTA utk kemas kini akan datang: dl2-h/dl3-h kena ikut versi release baharu
 - FFFD: 0 (disemak selepas edit)
 
 ## Sesi 38d - 2 Okt 2026 (ikon brand dibesarkan)
 - CSS .brand img: 38x38 (radius 9px) -> 46x46 (radius 11px) - logo nav + footer
 - Alasan: ikon baharu berbentuk segi empat (1123x1135) nampak lebih kecil pada saiz lama
+
+## Sesi 39 - 5 Okt 2026 (nav kemas + Biodata Penerbit live)
+
+**FINAL ✅** — 4 commit pushed -> Cloudflare auto-deploy:
+`ad74858` (pop-up biodata + foto + baiki nav melimpah) -> `35ba319` (pulangkan pautan Utama,
+kandungan ikut BIODATA_PENERBIT.md, buang fimos) -> `319c5d7` (buang pautan akula69,
+ayat lahir 1969 ms+en) -> `aec1488` (typo PUSTAHA->PUSTAKA, "dalam dalam"->"dalam",
+badge hero MS 1 baris)
+
+### Header nav (2 Pending Sesi 37 = SELESAI)
+- Pautan `#mula` (Mula Pantas) + `#soalan` (Soalan Lazim) ditambah; link "Utama" dipulangkan
+  (i18n `nav-home` ms "Utama" / en "Home"); burger di bawah 1180px
+- CSS: `.nav-links` gap 16px, `a` .88rem + white-space:nowrap, `.nav-cta` 8px 16px/.88rem,
+  `.lang-switch` margin 0 0 0 4px
+- Ukur: ruang dlm .wrap 1104px, kegunaan 1037px (slack 67px) -> nav MS + EN **1 baris** (screenshot 1400x760)
+
+### Biodata Penerbit (Pending Sesi 37 = SELESAI)
+- `#bioModal` dibuka dari pautan bio (foto `img/penerbit.jpg`, 768x1024); kandungan ikut
+  `BIODATA_PENERBIT.md`: Ringkasan 3 perenggan (lahir Singapura 1969 ms+en, Reverse Sensor/Proton,
+  SCADA, COO 2013, PERISAI/1 Machine, katil pesakit, 62,169 hadis/9 kitab) + Sejarah + jadual
+  `bio-stats` 6 baris + nota kaki (SESI.md/README.md)
+- CSS: `.lic-row.bio-row` (label `b` kekal inline, bukan display:block) + `.bio-stats`
+- Pautan kini `pustakahadith.my · muhd.khairullah@pustakahadith.my` (akula69 = 0 hit, fimos = 0)
+- Typo: `PUSTAKA HADITH` (3 tempat: static + ms + en) + buang kata ulang "dalam"
+- Disahkan: modal terbuka (`lic-modal open`) + teks via DOM dump; screenshot modal MS
+
+### Badge hero `.eyebrow`
+- Masalah: teks MS natural 569px > ruang lajur 552px -> wrap 2 baris + titik gantung
+- Fix: font .8rem -> .74rem, letter-spacing 2.5 -> 1.7px, padding 14 -> 12px, gap 8 -> 7px,
+  text-align:center + media `min-width:981px and max-width:1099px` (.68rem/1.1px)
+- Ukur (probe DOM, clone nowrap): 492/552 @1400 · 426/450 @981 · 1-lajur @600-900 -> **1 baris semua**;
+  <=420px wrap tetapi rata tengah (tiada titik gantung kiri)
+- EN: 396/552 -> 1 baris sebelum & selepas
+
+### Belum / menunggu pengesahan
+- Pengesahan visual pengguna: Kongsi FB (salin + tampal) dari app v1.0.3
+- Kad Store `dl1-p` kekal v1.0.2 sehingga Store serve v1.0.3
+
+## Sesi 39b - 5 Okt 2026 (pop-up biodata: selesa di HP + kurang scroll di desktop)
+
+**FINAL ✅** — belum commit (tunggu arahan push).
+
+### Punca sebenar di HP: halaman overflow mendatar
+- `.foot-grid{1.2fr 2fr}` + `.foot-cols{repeat(3,1fr)}` tak runtuh pd <=980px -> pd vp 390px
+  halaman jadi **543px** (24 elemen terlebih kanan; boleh swipe sisi bawah popup)
+- Fix @980px: `foot-grid` 1 lajur + `foot-cols` `repeat(3,minmax(0,1fr))`;
+  @600px: `foot-cols` 2 lajur -> **docW 543 -> 375, count 0** (360/390/414 semua lulus)
+
+### Pop-up biodata di HP (<=600px)
+- Kad ditahan `max-width:376px` (baris ~40 aksara, senang dibaca) + `.lic-modal` padding 18px,
+  padding kad 28/26 -> 22/18
+- Teks bio `.88rem` -> **`.95rem`** (lh 1.72); foto `132x176` -> `104x139`
+- Jadual `bio-stats` **bertindan** (label atas nilai) — dulu kolum pertama 42% terhimpit
+- Ukuran kad: 360->309px · 390->339px · 414->363px · 600->376px (overflowX=false semua)
+
+### Desktop (>=760px) — besar & panjang supaya tak payah scroll banyak
+- `#bioModal .lic-card`: `max-width` **520 -> 880px**, `max-height` 85 -> 88vh,
+  padding 34/36/30
+- `#bioModal .lic-rows` jadi **grid 2 lajur** (Ringkasan | Sejarah) — kandungan kolum kanan
+  (jadual 6 baris) jadi lebih pendek dari susunan bertindan
+- Kesan: `scrollHeight` 1562 -> 1199; skrin **1400x900: scroll perlu 916 -> 407px (-55%)**
+- 820px (2 lajur mula) hingga 1400px disemak; pop-up Lesen `#licModal` kekal 520px/1 lajur

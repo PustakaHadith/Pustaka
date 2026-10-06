@@ -323,6 +323,27 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
 .bio-id .bio-links a{color:var(--tealL)}
 .bio-quote{margin:10px 0 0; font-size:.86rem; font-style:italic; color:var(--muted); line-height:1.6}
 @media(max-width:520px){.bio-top{flex-direction:column; align-items:center; text-align:center}}
+/* HP: kad ditahan supaya baris teks pendek & senang dibaca; foto kecil;
+   jadual bio-stats bertindan (label atas nilai) elak kolum 42% terhimpit. */
+@media(max-width:600px){
+  .lic-modal{padding:18px}
+  #bioModal .lic-card{max-width:376px; padding:22px 18px 20px}
+  .lic-row.bio-row > div{font-size:.95rem; line-height:1.72}
+  .lic-row.bio-row > div p{margin:0 0 12px}
+  .bio-foto{width:104px; height:139px}
+  .bio-stats, .bio-stats tbody, .bio-stats tr, .bio-stats td{display:block; width:auto}
+  .bio-stats tr{border-bottom:1px solid var(--bord); padding:8px 0 9px}
+  .bio-stats tr:last-child{border-bottom:0}
+  .bio-stats td{border-bottom:0; padding:0}
+  .bio-stats td:first-child{width:auto; margin-bottom:3px}
+}
+/* Desktop: kad lebih besar (880px) + 2 lajur Ringkasan | Sejarah
+   supaya kandungan muat 1 skrin — pembaca tak payah scroll banyak. */
+@media(min-width:760px){
+  #bioModal .lic-card{max-width:880px; max-height:88vh; padding:34px 36px 30px}
+  #bioModal .lic-rows{display:grid; grid-template-columns:1fr 1fr; gap:16px; align-items:start}
+  #bioModal .lic-row.bio-row > div{font-size:.93rem; line-height:1.7}
+}
 
 /* ---------- reveal on scroll ---------- */
 .reveal{opacity:0; transform:translateY(32px) scale(.97); transition:opacity .8s cubic-bezier(.4,0,.2,1), transform .8s cubic-bezier(.4,0,.2,1)}
@@ -447,6 +468,10 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
   .ciri-grid{grid-template-columns:repeat(2,1fr)}
   .rak{grid-template-columns:repeat(3,1fr)}
   .dl-grid{grid-template-columns:1fr}
+  /* footer: turun ke 1 lajur — dulu 1.2fr/2fr + foot-cols 3 kolum memaksa
+     halaman 543px pd vp 390px (scroll mendatar di HP) */
+  .foot-grid{grid-template-columns:minmax(0,1fr); gap:34px}
+  .foot-cols{grid-template-columns:repeat(3,minmax(0,1fr)); gap:22px}
   .nav-links{display:none; position:absolute; top:66px; left:0; right:0; background:rgba(8,17,26,.97); border-bottom:1px solid var(--bord); flex-direction:column; align-items:flex-start; padding:16px 20px 22px; gap:18px}
   .nav-links.open{display:flex}
   .burger{display:block; z-index:20}
@@ -456,6 +481,7 @@ footer::before{content:''; position:absolute; top:0; left:0; right:0; height:1px
   .band-grid{grid-template-columns:repeat(2,1fr); gap:26px}
   .hero-stats{grid-template-columns:repeat(2,1fr)}
   .hero{min-height:auto; padding:100px 0 40px}
+  .foot-cols{grid-template-columns:repeat(2,minmax(0,1fr)); gap:20px 18px}
 }
 </style>
 <script type="application/ld+json">
