@@ -1,0 +1,5 @@
+# Fail lokal sahaja — jangan di-push ke GitHub
+# (push ke repo ini = auto-deploy Cloudflare Pages; hanya landing-page/ perlu)
+
+/video-promo/
+/img/
