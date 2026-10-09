@@ -155,7 +155,7 @@ None configured.
 
 ## Redirects (Old Domain)
 
-- Old domain `pustakahadith.netlify.app` → redirect to `pustakahadith.my` (handled separately via Netlify `.htaccess` in `redirect/` folder)
+- Old domains `pustakahadith.netlify.app` dan `pustakahadith.site.je` — **tidak digunakan lagi** (arahan pengguna: lupus). Sesiapa yang masih mendarat di situ dinuklkan ke `pustakahadith.my` melalui Netlify `.htaccess` dalam `redirect/` folder.
 
 ---
 

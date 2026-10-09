@@ -229,13 +229,14 @@ badge hero MS 1 baris)
   <=420px wrap tetapi rata tengah (tiada titik gantung kiri)
 - EN: 396/552 -> 1 baris sebelum & selepas
 
-### Belum / menunggu pengesahan
-- Pengesahan visual pengguna: Kongsi FB (salin + tampal) dari app v1.0.3
-- Kad Store `dl1-p` kekal v1.0.2 sehingga Store serve v1.0.3
+### Belum / menunggu pengesahan → SEMUA TUTUP (5 Okt, pengesahan pengguna)
+- ~~Semakan pop-up biodata di HP sebenar~~ ✅ disahkan pengguna
+- ~~Kongsi FB (salin + tampal) dari app v1.0.3~~ ✅ disahkan visual
+- ~~Kad Store `dl1-p` kekal v1.0.2~~ ✅ Store serve v1.0.3, kad OK
 
 ## Sesi 39b - 5 Okt 2026 (pop-up biodata: selesa di HP + kurang scroll di desktop)
 
-**FINAL ✅** — belum commit (tunggu arahan push).
+**FINAL ✅** — sudah commit `e5aa758` (5 Okt).
 
 ### Punca sebenar di HP: halaman overflow mendatar
 - `.foot-grid{1.2fr 2fr}` + `.foot-cols{repeat(3,1fr)}` tak runtuh pd <=980px -> pd vp 390px
@@ -260,7 +261,7 @@ badge hero MS 1 baris)
 
 ## Sesi 39c - 5 Okt 2026 (pembetulan fakta: tarikh bermula)
 
-**FINAL ✅** — belum commit (gabung dengan perubahan lain, tunggu arahan push).
+**FINAL ✅** — sudah commit `577334e` (5 Okt).
 
 - Salah fakta lama: "projek peribadi pada **30 Ogos 2026** / kurang daripada enam
   minggu" — pengguna: penyelidikan dimulakan **bertahun-tahun lebih awal**,
@@ -275,3 +276,30 @@ badge hero MS 1 baris)
 - Disahkan via DOM dump MS & EN: `30 Ogos 2026`/`30 August 2026` = 0 hit,
   `enam minggu`/`six weeks` = 0 hit; `Mei/May 2026`, `bertahun-tahun`/`years of
   personal research`, `lima bulan`/`five months` semuanya hadir
+
+## Sesi 39d - 5 Okt 2026 (pengesahan akhir + analisa Android + kebersihan repo)
+
+**FINAL ✅** — semua commit/push selesai (outer `71887d9`, app `e1166e1`).
+
+### Pengesahan pengguna — TUTUP semua item tertunggak
+- Pop-up biodata di **HP sebenar** ✅ · **Kongsi FB** (salin + tampal) ✅ ·
+  **Kad Store → v1.0.3** ✅ — tiada lagi item "menunggu pengesahan"
+
+### Analisa ke Android (rujukan LOKAL — sengaja tidak commit)
+- Folder baharu `analisa-android/ANALISA_ANDROID.md` (di luar `PustakaHadith/`,
+  dalam path `Pustaka`) — 3 jalan: PWA 10–15 hari (cadangan) / Chaquopy 15–25 /
+  rewrite Kotlin 25–40; peta aset diukur (`hadis.db` 353.9 MB, indeks FAISS
+  91.1 MB, `.cache_models` 940.9 MB → tukar ONNX int8 ~35 MB); storan telefon
+  380–530 MB (sekali muat turun, ikut bahasa jimat ~40–50%); storan PC dev
+  20–35 GB (penuh) / 10–15 GB (guna HP sendiri) / PWA ~0–1 GB
+
+### Kebersihan GitHub — 107 fail dilepas, kekal lokal
+- Repo luar `Pustaka`: 67 → **40** fail track — `video-promo/` + `img/` di-lepas
+  (`.gitignore` baharu, commit `aa341b1`); track semula
+  `video-promo/LANGKAH_4_EKSPORT_UPLOAD.md` sahaja (228 baris — mod terakhir
+  tak pernah commit, simpanan awan, commit `71887d9`)
+- Repo app `PustakaHadith`: 217 → **138** — `dokumen/` `screenshots/` `docs/`
+  `msix/` `mockup/` + 2 html dilepas (commit `e1166e1`); CI (compileall .py) dan
+  `semak.py` lokal tak terjejas
+- Semua fail kekal di disk; isi lama masih dalam sejarah GitHub (history rewrite
+  ditolak — risiko tinggi)

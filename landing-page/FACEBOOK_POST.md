@@ -27,7 +27,7 @@ Kami bina PustakaHadith — perpustakaan digital hadis yang boleh dipasang terus
 ✅ Berfungsi sepenuhnya TANPA internet
 ✅ Percuma & open source
 
-👉 Muat turun sekarang: https://pustakahadith.site.je
+👉 Muat turun sekarang: https://pustakahadith.my
 
 Sesuai untuk pelajar, pengkaji, peminat hadis & sesiapa sahaja yang ingin membaca hadis dengan mudah.
 
@@ -56,5 +56,5 @@ Cara kongsi:
 ## Nota
 
 - Jika gambar `app-home.png` terlalu besar, Facebook akan auto-compress
-- Pastikan pautan `https://pustakahadith.site.je` berfungsi sebelum post
+- Pastikan pautan `https://pustakahadith.my` berfungsi sebelum post
 - Anda boleh edit teks mengikut group yang berbeza
