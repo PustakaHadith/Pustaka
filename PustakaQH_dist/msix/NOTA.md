@@ -13,11 +13,17 @@
 
 | Fail | Versi | Nota |
 |---|---|---|
-| PustakaHadith-v1.0.0-slim.msix | 1.0.0 | slim (blobs dibuang) |
-| PustakaHadith-v1.0.0.msix | 1.0.0 | penuh |
-| PustakaHadith-v1.0.1.msix | 1.0.1 | Store refresh |
-| PustakaHadith-v1.0.2.0.msix | 1.0.2.0 | |
-| PustakaHadith_1.0.3.0_x64.msix | 1.0.3.0 | 30 Sep 2026, self-signed |
+| PustakaHadith_1.1.0_x64.msix | 1.1.0 | **semasa** — Store LIVE, juga di GitHub Release (SHA-256 sepadan) |
+
+> **Pembersihan 21 Okt 2026** — 5 pakej lama dibuang (~4.3 GB) kerana sudah
+> digantikan di Microsoft Store dan tiada skrip/dokumen yang merujuknya:
+> `v1.0.0.msix` (1,093.7 MB) · `v1.0.0-slim.msix` (814.8 MB) ·
+> `v1.0.1.msix` (814.7 MB) · `v1.0.2.0.msix` (781.9 MB) ·
+> `v1.0.3.0_x64.msix` (781.9 MB).
+> Disahkan selamat: `build_msix.ps1` sentiasa membina semula dari
+> `PustakaQH_dist\PustakaHadith` → `msix_staging` (dipadam & dicipta
+> semula setiap larian), tidak pernah membaca pakej lama; `semak.py`
+> tidak menyemak fail MSIX sama sekali.
 
 ## Pembinaan
 
