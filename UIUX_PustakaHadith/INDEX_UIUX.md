@@ -31,6 +31,7 @@
 | Loading states carian | `pages_carian.py` | Indikator jam berputar (12 muka + QTimer) + laluan gagal melengkapkan paparan - dikunci gate 8l `semak.py` |
 | 5 tema terang/gelap | `theme.py` | AQUA lalai, NEUTRAL, DARK, LIGHT_NEUTRAL, LIGHT - semua tier teks AA 4.5:1 (gate 13, 150 pasangan) |
 | Responsif 900x560 | `app_qt.py` | `setMinimumSize(900, 560)` + auto-klamp + panel melimpah (`pages_detail.py:353`) + `tests/uji_responsif_viewport.py` (6 halaman x 4 saiz, DPI 150%) |
+| Buka mod max (85%) | `main.py` | Arahan 24 Nov 2026 (Sesi 52): `_toggle_maksimum()` sebelum `show()` - apl buka terus 85% `availableGeometry`, restore-down balik 1280x720; tiada flash saiz lama |
 
 > **Dikemas kini 1 November 2026 (Sesi 48):** tiga baris berikut
 > (Loading states, Tema terang/gelap, Responsif 900x560) sebelum ini
