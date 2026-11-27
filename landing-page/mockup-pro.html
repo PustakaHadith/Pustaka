@@ -1141,6 +1141,28 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>setLang(b.data
 try{if(localStorage.getItem('ph-lang')==='en')setLang('en')}catch(e){}
 
 document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- animasi interaktif ---------- */
+(()=>{
+  const motionOK=!matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const hoverOK=matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if(!motionOK||!hoverOK)return;
+  const hero=document.querySelector('.hero'),win=document.querySelector('.hero .win'),
+        glow=document.querySelector('.bg-glow');
+  let raf=0,px=0,py=0;
+  hero.addEventListener('pointermove',e=>{
+    const r=hero.getBoundingClientRect();
+    px=((e.clientX-r.left)/r.width-.5)*16;   /* had ±8px */
+    py=((e.clientY-r.top)/r.height-.5)*12;   /* had ±6px */
+    if(!raf)raf=requestAnimationFrame(()=>{
+      raf=0;
+      win.style.translate=px.toFixed(1)+'px '+py.toFixed(1)+'px';
+      glow.style.translate=(-px*.4).toFixed(1)+'px '+(-py*.4).toFixed(1)+'px';
+    });
+  },{passive:true});
+  hero.addEventListener('pointerleave',()=>{win.style.translate='';glow.style.translate=''});
+  /* Task 3: tilt · Task 4: magnet — sisip di sini, dalam IIFE yang sama */
+})();
 </script>
 </body>
 </html>
