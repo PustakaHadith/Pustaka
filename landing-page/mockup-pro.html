@@ -1161,7 +1161,21 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     });
   },{passive:true});
   hero.addEventListener('pointerleave',()=>{win.style.translate='';glow.style.translate=''});
-  /* Task 3: tilt · Task 4: magnet — sisip di sini, dalam IIFE yang sama */
+  /* Task 3: tilt */
+  document.querySelectorAll('.rak .book,.bento .feat').forEach(card=>{
+    const lift=card.classList.contains('book')?-6:-4;
+    card.addEventListener('pointermove',e=>{
+      if(!card.classList.contains('in'))return;
+      const r=card.getBoundingClientRect();
+      const rx=((e.clientY-r.top)/r.height-.5)*-16;  /* had ±8° */
+      const ry=((e.clientX-r.left)/r.width-.5)*16;   /* had ±8° */
+      card.style.transitionDuration='.12s';
+      card.style.transitionDelay='0ms';
+      card.style.transform=`perspective(900px) translateY(${lift}px) rotateX(${rx.toFixed(1)}deg) rotateY(${ry.toFixed(1)}deg)`;
+    },{passive:true});
+    card.addEventListener('pointerleave',()=>{card.style.transform=''});
+  });
+  /* Task 4: magnet — sisip di sini, dalam IIFE yang sama */
 })();
 </script>
 </body>
