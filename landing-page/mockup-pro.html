@@ -1175,7 +1175,16 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     },{passive:true});
     card.addEventListener('pointerleave',()=>{card.style.transform=''});
   });
-  /* Task 4: magnet — sisip di sini, dalam IIFE yang sama */
+  /* Task 4: magnet */
+  document.querySelectorAll('.btn-p').forEach(btn=>{
+    btn.addEventListener('pointermove',e=>{
+      const r=btn.getBoundingClientRect();
+      const x=Math.max(-5,Math.min(5,(e.clientX-(r.left+r.width/2))*.25));
+      const y=Math.max(-5,Math.min(5,(e.clientY-(r.top+r.height/2))*.25));
+      btn.style.translate=x.toFixed(1)+'px '+y.toFixed(1)+'px';
+    },{passive:true});
+    btn.addEventListener('pointerleave',()=>{btn.style.translate=''});
+  });
 })();
 </script>
 </body>
