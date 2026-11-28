@@ -277,10 +277,12 @@ h1 .grad{background:linear-gradient(100deg,var(--brand-hi) 0%,var(--brand) 42%,v
 }
 .tabs button:hover{color:var(--txt);border-color:var(--line-2);transform:translateY(-1px)}
 .tabs button.on{background:var(--brand);border-color:var(--brand);color:#04211C}
-.stage{max-width:960px;margin-inline:auto}
+.stage{position:relative;max-width:960px;margin-inline:auto}
 .pane{display:none}
-.pane.on{display:block;animation:in .5s var(--ease)}
-@keyframes in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:none}}
+.pane.on{display:block;animation:slideInLeft .5s var(--ease)}
+.pane.out{display:block;position:absolute;inset:0;animation:slideOutRight .5s var(--ease) forwards;pointer-events:none}
+@keyframes slideInLeft{from{transform:translateX(-100%);opacity:0}to{transform:translateX(0);opacity:1}}
+@keyframes slideOutRight{from{transform:translateX(0);opacity:1}to{transform:translateX(100%);opacity:0}}
 .pane .frame{border:1px solid var(--line-2);border-radius:var(--r-xl);overflow:hidden;box-shadow:var(--shadow-3);background:var(--surface)}
 .pane img{width:100%;aspect-ratio:16/9.6;object-fit:cover;object-position:top}
 .pane figcaption{margin-top:18px;text-align:center;color:var(--txt-3);font-size:.92rem}
@@ -1058,10 +1060,18 @@ burger.onclick=()=>mobile.classList.toggle('open');
 mobile.querySelectorAll('a').forEach(a=>a.onclick=()=>mobile.classList.remove('open'));
 
 /* ---------- tab ---------- */
+const animOK=!matchMedia('(prefers-reduced-motion: reduce)').matches;
 document.querySelectorAll('.tabs button').forEach(b=>{
   b.onclick=()=>{
+    if(b.classList.contains('on'))return;
+    const prev=document.querySelector('.pane.on');
     document.querySelectorAll('.tabs button').forEach(x=>x.classList.remove('on'));
     document.querySelectorAll('.pane').forEach(p=>p.classList.remove('on'));
+    document.querySelectorAll('.pane.out').forEach(p=>p.classList.remove('out'));
+    if(prev&&animOK){
+      prev.classList.add('out');
+      setTimeout(()=>prev.classList.remove('out'),500);
+    }
     b.classList.add('on');
     document.getElementById(b.dataset.pane).classList.add('on');
   };
@@ -1220,7 +1230,7 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     const active=tabs.findIndex(b=>b.classList.contains('on'));
     tabs[(active+1)%tabs.length].click();
   };
-  const play=()=>{if(!timer)timer=setInterval(next,2000)};
+  const play=()=>{if(!timer)timer=setInterval(next,4000)};
   const pause=()=>{if(timer){clearInterval(timer);timer=0}};
   stage.addEventListener('pointerenter',pause);
   stage.addEventListener('pointerleave',play);
