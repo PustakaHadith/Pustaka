@@ -303,3 +303,67 @@ badge hero MS 1 baris)
   `semak.py` lokal tak terjejas
 - Semua fail kekal di disk; isi lama masih dalam sejarah GitHub (history rewrite
   ditolak — risiko tinggi)
+
+## Sesi 40 - 9 Okt → 28 Nov 2026 (v1.1.0 → v1.2.0 → reka bentuk Pro live)
+
+**FINAL ✅** — `main` = `origin/main` = `48ec7cd`; `https://pustakahadith.my` live (HTTP 200).
+
+### 40a — 9 Okt 2026: landing v1.1.0 (`b9544a5`)
+- Changelog + butang `dl2`/`dl3` + `dl-note` → v1.1.0 (MS+EN); kad Store `dl1-p` kekal v1.0.3
+- `FACEBOOK_POST.md`, `cloudflare.md`, `redirect/.htaccess` dikemas kini; redirect → `pustakahadith.my`
+
+### 40b — 25 Nov 2026: landing v1.2.0 (`edc9ea9`)
+- 29 rujukan versi: changelog 24 Nov + kad Store/EXE/ZIP → v1.2.0, terjemahan MS+EN
+
+### 40c — 27–28 Nov 2026: prototaip `mockup-pro.html` (17 commit, `b32fd4e` → `7e7a223`)
+- Entrance hero + parallax/glow ikut kursor, butang magnet, tilt 3D kad kitab & ciri
+- Slide gambar horizontal auto 2s → 4 saat, pause bila kursor masuk, guard
+  `motionOK`/`hoverOK`/`prefers-reduced-motion`
+- Popup pautan 7-Zip (dialog tengah viewport, terjemahan EN), reset ke halaman
+  utama masa load/refresh, posisi tatal kekal untuk back/forward
+- Kover Bukhari/Muslim rata mengikut templat 9 kitab: fail baharu
+  `img/bukh-flat.png`, `img/muslim-flat.png` (`14a3005`); prototaip guna kover
+  templat (`7e7a223`)
+
+### 40d — 28 Nov 2026: publish Pro ke `index.html` (`a20b657` → `48ec7cd`)
+- Pilihan pengguna **B — timpa + pulihkan fungsi**; `mockup-pro.html` TIDAK diubah
+- `index.html` ditimpa dengan reka bentuk Pro; 3 fungsi lama dipulihkan: modal
+  **Lesen Data** (`#licModal`), modal **Biodata Penerbit** (`#bioModal`), borang
+  `mailto:` (`buildMailto`, `info2@pustakahadith.my`)
+- 23 kunci EN (21 lama + `f-lic`, `f-bio`); `aria-label` tutup MS/EN melalui
+  `data-i18n-aria`
+- Borang: `required` pada nama/tajuk/mesej; newline sebenar `%0A%0A`
+  (bukan `%250A%250A`)
+- Regresi: komit `db79943` mengandungi mojibake (PowerShell baca UTF-8 sebagai
+  ANSI) → dibaiki `79378e6` dengan Python UTF-8 eksplisit
+- Reviewer segar: 1 *Important* (`required` hilang) → dibaiki `48ec7cd` bersama
+  `aria-label` EN untuk 2 butang tutup
+- Spec + plan di-commit awal `35fa6e6`; ledger
+  `.superpowers/sdd/2026-11-28-publish-landing-pro/progress.md`
+
+### Fail dalam `landing-page/` terjejas sejak Sesi 39d
+- `index.html` — **ditimpa** dengan reka bentuk Pro + fungsi dipulihkan (5 commit)
+- `mockup-pro.html` — prototaip + 17 penambahbaikan (sumber reka bentuk; kekal
+  tidak disentuh masa publish)
+- `img/bukh-flat.png`, `img/muslim-flat.png` — **baharu** (`14a3005`)
+- `img/abudaud-ro.png`, `img/ahmad-ro.png`, `img/darimi-ro.png`,
+  `img/iibn-majah-ro.png`, `img/malik-ro.png`, `img/nasai-ro.png`,
+  `img/tirmizi-ro.png` — **dikemas kini** (`65e95a0`); 9/9 kover `512×512`
+- `FACEBOOK_POST.md`, `cloudflare.md`, `redirect/.htaccess` — kemas kini v1.1.0
+  (`b9544a5`)
+- `BIODATA_PENERBIT.md` — **modified secara lokal, luar skop**; sengaja tidak
+  di-commit
+- `img/logo_300x300.png` — **untracked, luar skop**; sengaja tidak di-commit
+- `SESI.md` — entri ini
+
+### Verifikasi (bukti segar)
+- `git status -sb`: `## main...origin/main`; `HEAD` = `origin/main` = `48ec7cd`,
+  `git diff HEAD origin/main` kosong
+- Lokal: 8/8 Unicode, 20/20 rujukan tempatan sah, 0 ID bertindih, 0 kunci EN
+  hilang, 0 ralat konsol
+- Borang: kosong `checkValidity():false`, diisi `true`; URL `mailto:` dengan
+  `%0A%0A`
+- Live: HTTP 200 + 8/8 penanda (7-Zip, Lesen, Biodata, `mailto:`, borang +
+  `required`, Arab, kover, tiada mojibake); deploy Cloudflare ~75 saat selepas push
+- Reviewer: 0 Critical; semua isu Important selesai. Minor (focus-trap, fallback
+  subjek, petik kunci) ditangguhkan — pariti dengan halaman lama
