@@ -35,6 +35,7 @@ Apabila `landing-page/mockup-pro.html` dibuka atau direfresh, pengguna mesti mel
 - `replaceState` hanya dipanggil bila `location.hash` tidak kosong, untuk mengelak sejarah/URL tidak perlu berubah.
 - `scrollTo` dipanggil tanpa syarat bagi menampal pemulihan tatal pelayar walaupun URL tidak berfragmen.
 - `history.scrollRestoration='manual'` dikunci dengan `"scrollRestoration" in history` untuk pelayar lama.
+- Navigasi `back_forward` **tidak** diset semula: `performance.getEntriesByType('navigation')[0].type` digunakan untuk membezakannya; untuk `back_forward`, `scrollRestoration` kekal `auto`, hash tidak dibuang, dan `scrollTo` tidak dipanggil. Ini mengelak kesan sampingan di luar skop buka/refresh (keputusan pembina selepas semakan).
 
 ## Ujian yang akan membuktikan
 
