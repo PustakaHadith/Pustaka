@@ -1067,9 +1067,14 @@ footer{border-top:1px solid var(--line);padding:var(--s-6) 0 var(--s-4);margin-t
 
 <script>
 /* ---------- mula di halaman utama ---------- */
-if('scrollRestoration' in history)history.scrollRestoration='manual';
-if(location.hash)history.replaceState(null,'',location.pathname+location.search);
-scrollTo({top:0,behavior:'instant'});
+(function(){
+  const navEntry=performance.getEntriesByType?.('navigation')?.[0];
+  const isBackForward=navEntry?.type==='back_forward';
+  if('scrollRestoration' in history)history.scrollRestoration=isBackForward?'auto':'manual';
+  if(isBackForward)return;
+  if(location.hash)history.replaceState(null,'',location.pathname+location.search);
+  scrollTo({top:0,behavior:'instant'});
+})();
 
 /* ---------- nav ---------- */
 const nav=document.getElementById('nav'),bar=document.getElementById('bar');
