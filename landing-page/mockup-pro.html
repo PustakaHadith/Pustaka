@@ -1206,29 +1206,25 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     });
   });
 })();
-/* ---------- 22. SLIDE GAMBAR ---------- */
+/* ---------- 22. AUTO-SLIDE GAMBAR ---------- */
 (function(){
   const motionOK=!matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hoverOK=matchMedia('(hover: hover) and (pointer: fine)').matches;
+  if(!motionOK||!hoverOK)return; // aksesibiliti: tab manual kekal berfungsi
   const stage=document.querySelector('.stage');
-  const panes=stage.querySelectorAll('.pane');
-  let current=0;
-  // Fungsi goto — boleh dipanggil sekalipun current/panes/sedia ada
-  const goTo=(idx)=>{
-    current=(idx%5+5)%5;
-    const w=panes[current].naturalWidth||panes[current].getBoundingClientRect().width;
-    stage.style.transform='translateX('+(-current*w)+'px)';
-    stage.style.transitionDuration='.12s';
-    stage.style.transitionDelay='0ms';
+  const tabs=[...document.querySelectorAll('.tabs button')];
+  if(!stage||tabs.length<2)return;
+  let timer=0;
+  // Guna semula logik tab sedia ada: kelas .on pada butang + pane
+  const next=()=>{
+    const active=tabs.findIndex(b=>b.classList.contains('on'));
+    tabs[(active+1)%tabs.length].click();
   };
-  // Guard: jika reduced-motion/tiada tetikus, tetapkan p0 tetapi jangan mula auto-slide
-  if(!motionOK||!hoverOK){goTo(0);return;}
-  const next=()=>{goTo(current+1)};
-  let raf=0;
-  goTo(0);
-  raf=setInterval(next,2000);
-  stage.addEventListener('pointerenter',()=>{if(raf){clearInterval(raf);raf=0}});
-  stage.addEventListener('pointerleave',()=>{if(!raf)raf=setInterval(next,2000)});
+  const play=()=>{if(!timer)timer=setInterval(next,2000)};
+  const pause=()=>{if(timer){clearInterval(timer);timer=0}};
+  stage.addEventListener('pointerenter',pause);
+  stage.addEventListener('pointerleave',play);
+  if(!stage.matches(':hover'))play(); // elak auto-slide jika cursor sudah berada di dalam
 })();
 </script>
 </body>
