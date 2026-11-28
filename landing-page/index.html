@@ -1046,9 +1046,9 @@ footer{border-top:1px solid var(--line);padding:var(--s-6) 0 var(--s-4);margin-t
       </article>
 
       <form class="card ct-card rv" onsubmit="event.preventDefault();window.location.href=buildMailto(this)">
-        <label><span data-i18n="f-n">Nama</span><input type="text" name="name" placeholder="Nama penuh"></label>
-        <label><span data-i18n="f-s">Tajuk</span><input type="text" name="subject" placeholder="Tajuk mesej"></label>
-        <label><span data-i18n="f-m">Mesej</span><textarea name="message" rows="5" placeholder="Tulis mesej anda…"></textarea></label>
+        <label><span data-i18n="f-n">Nama</span><input type="text" name="name" required placeholder="Nama penuh"></label>
+        <label><span data-i18n="f-s">Tajuk</span><input type="text" name="subject" required placeholder="Tajuk mesej"></label>
+        <label><span data-i18n="f-m">Mesej</span><textarea name="message" rows="5" required placeholder="Tulis mesej anda…"></textarea></label>
         <button class="btn btn-p" style="align-self:flex-start" type="submit" data-i18n="f-b">Hantar Mesej</button>
       </form>
     </div>
@@ -1119,7 +1119,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-6) 0 var(--s-4);margin-t
 <!-- modal Lesen Data -->
 <div class="lic-modal" id="licModal" aria-hidden="true">
   <div class="lic-card" role="dialog" aria-modal="true" aria-labelledby="licTitle">
-    <button class="lic-x" id="licClose" aria-label="Tutup">✕</button>
+    <button class="lic-x" id="licClose" aria-label="Tutup" data-i18n-aria="lic-close-aria">✕</button>
     <div class="kicker" data-i18n="lic-kicker">Lesen</div>
     <h3 id="licTitle" data-i18n="lic-title">Lesen Data &amp; Perisian</h3>
     <div class="lic-rows">
@@ -1135,7 +1135,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-6) 0 var(--s-4);margin-t
 <!-- modal Biodata Penerbit (gaya sama pop-up Lesen Data) -->
 <div class="lic-modal" id="bioModal" aria-hidden="true">
   <div class="lic-card" role="dialog" aria-modal="true" aria-labelledby="bioTitle">
-    <button class="lic-x" id="bioClose" aria-label="Tutup">✕</button>
+    <button class="lic-x" id="bioClose" aria-label="Tutup" data-i18n-aria="bio-close-aria">✕</button>
     <div class="kicker" data-i18n="bio-kicker">Penerbit</div>
     <h3 id="bioTitle" data-i18n="bio-title">Biodata Penerbit</h3>
     <div class="bio-top">
@@ -1272,8 +1272,8 @@ const I18N={
     "bio2-k":"How PustakaHadith Was Built",
     "bio2-v":"<p>PustakaHadith grew out of years of personal research. This desktop app itself was first developed in <b>May 2026</b> and reached <b>version 1.0.3 on the Microsoft Store</b> in early <b>October 2026</b> — about five months from first code to public release.</p><p>Built with <b>Python + PyQt5</b> for the Windows desktop interface, with data stored locally in <b>SQLite + FTS5</b> (full text index) and the <b>FAISS + e5-small</b> vector index for meaning search. In short:</p><table class=\"bio-stats\"><tr><td>62,169 hadiths</td><td>9 Kutub al-Tis'ah books, Arabic text + Malay/Indonesian/English translations</td></tr><tr><td>63,930 grading records</td><td>Sahih / Hasan / Da'if per scholars' assessment</td></tr><tr><td>31,322 chapter divisions</td><td>topic navigation</td></tr><tr><td>4,237 commentaries</td><td>from SemakHadis.com (with attribution)</td></tr><tr><td>2 search layers</td><td>keyword (FTS5) <b>and</b> meaning (AI) running together</td></tr><tr><td>0 internet dependency</td><td>after installation, everything runs offline</td></tr></table><p>Quality is never left to chance: every release passes <b>381 automatic checks</b> in <b>semak.py</b> (15 sections) — hadith counts, data map consistency, screen layout tests, visual regression tests, down to language checks so documentation stays in Malaysian Malay.</p>",
     "bio-note":"This page was compiled from the publisher's LinkedIn profile and the development history of the <b>PustakaHadith/PustakaHadith</b> repo (SESI.md, README.md).",
-    'f-lic':'Data License','f-bio':'Publisher Profile',
-        'toTop':'Back to top'
+    'f-lic':'Data License','f-bio':'Publisher Profile','lic-close-aria':'Close','bio-close-aria':'Close',
+    'toTop':'Back to top'
   }
 };
 function setLang(l){
