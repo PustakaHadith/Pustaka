@@ -102,7 +102,7 @@ Run C — RF3:
 `browser.evaluate`:
 
 ```js
-(()=>{history.replaceState(null,'',location.pathname+location.search);scrollTo({top:0,behavior:'instant'});window.scrollTo(0,5000);return Math.round(scrollY)})()
+(()=>{history.replaceState(null,'',location.pathname+location.search);scrollTo({top:5000,behavior:'instant'});return Math.round(scrollY)})()
 ```
 
 Assert `before > 0`, kemudian `browser.reload({ignoreCache:true})`, then `browser.evaluate`:
