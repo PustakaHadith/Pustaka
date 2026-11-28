@@ -1210,11 +1210,7 @@ document.getElementById('yr').textContent=new Date().getFullYear();
 (function(){
   const motionOK=!matchMedia('(prefers-reduced-motion: reduce)').matches;
   const hoverOK=matchMedia('(hover: hover) and (pointer: fine)').matches;
-  // Jika guard mati, tetapkan tapi jangan mula auto-slide
-  if(!motionOK||!hoverOK){goTo(0);return;}
-  const stage=document.querySelector('.stage');
-  const panes=stage.querySelectorAll('.pane');
-  let current=0;
+  // Fungsi goto didefinisikan SEBELUM guard supaya tidak ada ReferenceError
   const goTo=(idx)=>{
     current=(idx%5+5)%5;
     const w=panes[current].naturalWidth||panes[current].getBoundingClientRect().width;
@@ -1222,13 +1218,12 @@ document.getElementById('yr').textContent=new Date().getFullYear();
     stage.style.transitionDuration='.12s';
     stage.style.transitionDelay='0ms';
   };
-  const next=()=>{goTo(current+1)};
-  let raf=0;
-  goTo(0);
-  raf=setInterval(next,2000);
-  stage.addEventListener('pointerenter',()=>{if(raf){clearInterval(raf);raf=0}});
-  stage.addEventListener('pointerleave',()=>{if(!raf)raf=setInterval(next,2000)});
-})();
+  // Guard: jika reduced-motion/tiada tetikus, tetapkan p0 tetapi jangan mula auto-slide
+  if(!motionOK||!hoverOK){goTo(0);return;}
+  const stage=document.querySelector('.stage');
+  const panes=stage.querySelectorAll('.pane');
+  let current=0;
+  // ... sisanya kod sama
 </script>
 </body>
 </html>
