@@ -389,6 +389,16 @@ h1 .grad{background:linear-gradient(100deg,var(--brand-hi) 0%,var(--brand) 42%,v
 .dl-head .ico svg{width:19px;height:19px}
 .dl-head b{font-size:1.02rem;font-weight:700;letter-spacing:-.015em}
 .dl-card p{color:var(--txt-2);font-size:.92rem;flex:1}
+.z7-link{display:inline-block;margin-top:10px;font-size:.84rem;font-weight:650;color:var(--brand-hi);text-decoration:underline;text-underline-offset:3px}
+.z7-link:hover{color:var(--brand)}
+#z7-dialog{position:relative;border:1px solid var(--line-2);border-radius:var(--r-xl);background:var(--surface);color:var(--txt);max-width:520px;width:calc(100% - 40px);padding:28px 30px 30px;box-shadow:var(--shadow-3)}
+#z7-dialog::backdrop{background:rgba(2,12,10,.72);backdrop-filter:blur(6px)}
+#z7-dialog h3{margin:0 0 12px;font-size:1.15rem;font-weight:700;letter-spacing:-.015em}
+#z7-dialog p{color:var(--txt-2);font-size:.92rem;margin:0 0 14px}
+#z7-dialog ol{margin:0 0 20px;padding-left:20px;color:var(--txt-2);font-size:.9rem}
+#z7-dialog li{margin-bottom:6px}
+.z7-close{position:absolute;top:12px;right:14px;border:0;background:none;color:var(--txt-3);font-size:1.5rem;line-height:1;cursor:pointer}
+.z7-close:hover{color:var(--txt)}
 .spec{list-style:none;margin:18px 0 22px;display:grid;gap:8px}
 .spec li{display:flex;align-items:center;gap:9px;font-size:.85rem;color:var(--txt-2)}
 .spec li svg{width:15px;height:15px;color:var(--brand);flex:none}
@@ -911,6 +921,7 @@ footer{border-top:1px solid var(--line);padding:var(--s-6) 0 var(--s-4);margin-t
           <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v12m0 0 4.5-4.5M12 15l-4.5-4.5M4 19h16"/></svg>
           <span data-i18n="d3c">Muat Turun ZIP</span>
         </a>
+        <a id="z7-link" class="z7-link" href="#z7-dialog" data-i18n="z7-link">Muat Turun 7-Zip</a>
       </article>
     </div>
 
@@ -1041,6 +1052,18 @@ footer{border-top:1px solid var(--line);padding:var(--s-6) 0 var(--s-4);margin-t
 <!-- ke atas -->
 <button id="toTop" aria-label="Ke atas" data-i18n-aria="toTop">↑</button>
 
+<dialog id="z7-dialog" aria-labelledby="z7-title">
+  <button id="z7-close" class="z7-close" type="button" aria-label="Tutup" data-i18n-aria="z7-close-aria">×</button>
+  <h3 id="z7-title" data-i18n="z7-title">Kenapa guna 7-Zip?</h3>
+  <p data-i18n="z7-body">Arkib ZIP ±1 GB kadang lambat atau gagal dengan 'Extract All' Windows. 7-Zip percuma dan sumber terbuka — ekstrak lebih laju, urus laluan panjang, dan boleh terus 'Extract to folder PustakaHadith'.</p>
+  <ol>
+    <li data-i18n="z7-step1">Muat turun dan pasang 7-Zip dari laman rasminya.</li>
+    <li data-i18n="z7-step2">Klik kanan fail ZIP → 7-Zip → Extract to folder 'PustakaHadith'.</li>
+    <li data-i18n="z7-step3">Buka folder itu dan jalankan <b>PustakaHadith.exe</b>. Padam folder = selesai.</li>
+  </ol>
+  <a id="z7-download" class="btn btn-p btn-sm" href="https://www.7-zip.org/download.html" target="_blank" rel="noopener" data-i18n="z7-cta">Buka muat turun 7-Zip</a>
+</dialog>
+
 <script>
 /* ---------- nav ---------- */
 const nav=document.getElementById('nav'),bar=document.getElementById('bar');
@@ -1151,6 +1174,17 @@ document.querySelectorAll('[data-lang]').forEach(b=>b.onclick=()=>setLang(b.data
 try{if(localStorage.getItem('ph-lang')==='en')setLang('en')}catch(e){}
 
 document.getElementById('yr').textContent=new Date().getFullYear();
+
+/* ---------- popup 7-Zip ---------- */
+(function(){
+  const link=document.getElementById('z7-link');
+  const dlg=document.getElementById('z7-dialog');
+  const close=document.getElementById('z7-close');
+  if(!link||!dlg||!close)return;
+  link.onclick=e=>{e.preventDefault();link.focus();dlg.showModal()};
+  close.onclick=()=>dlg.close();
+  dlg.addEventListener('click',e=>{if(e.target===dlg)dlg.close()});
+})();
 
 /* ---------- animasi interaktif ---------- */
 (()=>{
